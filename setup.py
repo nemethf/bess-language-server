@@ -90,4 +90,8 @@ setup(
             'yapf = bessls.plugins.yapf_format',
         ]
     },
+
+    package_data={
+        'bessls': ['extra/*'],
+    },
 )

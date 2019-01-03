@@ -203,19 +203,22 @@ class Document(object):
         )
 
     def jedi_script(self, position=None):
+        self.msource = "from mclass import *\n" + self.source
+        self.msource = self.msource.replace('->', '; ')
+        self.msource = self.msource.replace('::', '= ')
         kwargs = {
-            'source': self.source,
+            'source': self.msource,
             'path': self.path,
             'sys_path': self.sys_path()
         }
         if position:
-            kwargs['line'] = position['line'] + 1
+            kwargs['line'] = position['line'] + 2
             kwargs['column'] = _utils.clip_column(position['character'], self.lines, position['line'])
         return jedi.Script(**kwargs)
 
     def sys_path(self):
         # Copy our extra sys path
-        path = list(self._extra_sys_path)
+        path = list(self._extra_sys_path) + [os.path.join(os.path.dirname(__file__), 'extra')]
 
         # TODO(gatesn): #339 - make better use of jedi environments, they seem pretty powerful
         environment = jedi.api.environment.get_cached_default_environment()
