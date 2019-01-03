@@ -2,7 +2,7 @@
 from setuptools import find_packages, setup
 import versioneer
 
-README = open('README.rst', 'r').read()
+README = open('README.md', 'r').read()
 
 
 setup(
