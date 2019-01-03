@@ -206,6 +206,7 @@ class Document(object):
         self.msource = "from mclass import *\n" + self.source
         self.msource = self.msource.replace('->', '; ')
         self.msource = self.msource.replace('::', '= ')
+        self.msource = re.sub(r'\$\w(\w*)!', "'\\1'+", self.msource)
         kwargs = {
             'source': self.msource,
             'path': self.path,
