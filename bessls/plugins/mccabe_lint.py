@@ -2,7 +2,7 @@
 import ast
 import logging
 import mccabe
-from pyls import hookimpl, lsp
+from bessls import hookimpl, lsp
 
 log = logging.getLogger(__name__)
 

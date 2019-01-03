@@ -4,7 +4,7 @@ import pkg_resources
 
 import pluggy
 
-from pyls import _utils, hookspecs, uris, PYLS
+from bessls import _utils, hookspecs, uris, PYLS
 
 log = logging.getLogger(__name__)
 

@@ -6,7 +6,7 @@ import re
 import sys
 
 import pydocstyle
-from pyls import hookimpl, lsp
+from bessls import hookimpl, lsp
 
 log = logging.getLogger(__name__)
 

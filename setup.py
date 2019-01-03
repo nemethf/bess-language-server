@@ -6,7 +6,7 @@ README = open('README.rst', 'r').read()
 
 
 setup(
-    name='python-language-server',
+    name='bess-language-server',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -14,12 +14,12 @@ setup(
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
 
-    description='Python Language Server for the Language Server Protocol',
+    description='Bess Language Server for the Language Server Protocol',
 
     long_description=README,
 
     # The project's main homepage.
-    url='https://github.com/palantir/python-language-server',
+    url='https://github.com/nemethf/bess-language-server',
 
     author='Palantir Technologies, Inc.',
 
@@ -69,25 +69,25 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            'pyls = pyls.__main__:main',
+            'bessls = bessls.__main__:main',
         ],
-        'pyls': [
-            'autopep8 = pyls.plugins.autopep8_format',
-            'jedi_completion = pyls.plugins.jedi_completion',
-            'jedi_definition = pyls.plugins.definition',
-            'jedi_hover = pyls.plugins.hover',
-            'jedi_highlight = pyls.plugins.highlight',
-            'jedi_references = pyls.plugins.references',
-            'jedi_signature_help = pyls.plugins.signature',
-            'jedi_symbols = pyls.plugins.symbols',
-            'mccabe = pyls.plugins.mccabe_lint',
-            'preload = pyls.plugins.preload_imports',
-            'pycodestyle = pyls.plugins.pycodestyle_lint',
-            'pydocstyle = pyls.plugins.pydocstyle_lint',
-            'pyflakes = pyls.plugins.pyflakes_lint',
-            'rope_completion = pyls.plugins.rope_completion',
-            'rope_rename = pyls.plugins.rope_rename',
-            'yapf = pyls.plugins.yapf_format',
+        'bessls': [
+            'autopep8 = bessls.plugins.autopep8_format',
+            'jedi_completion = bessls.plugins.jedi_completion',
+            'jedi_definition = bessls.plugins.definition',
+            'jedi_hover = bessls.plugins.hover',
+            'jedi_highlight = bessls.plugins.highlight',
+            'jedi_references = bessls.plugins.references',
+            'jedi_signature_help = bessls.plugins.signature',
+            'jedi_symbols = bessls.plugins.symbols',
+            'mccabe = bessls.plugins.mccabe_lint',
+            'preload = bessls.plugins.preload_imports',
+            'pycodestyle = bessls.plugins.pycodestyle_lint',
+            'pydocstyle = bessls.plugins.pydocstyle_lint',
+            'pyflakes = bessls.plugins.pyflakes_lint',
+            'rope_completion = bessls.plugins.rope_completion',
+            'rope_rename = bessls.plugins.rope_rename',
+            'yapf = bessls.plugins.yapf_format',
         ]
     },
 )
