@@ -220,6 +220,8 @@ class Document(object):
     def sys_path(self):
         # Copy our extra sys path
         path = list(self._extra_sys_path) + [os.path.join(os.path.dirname(__file__), 'extra')]
+        if os.environ.get('BESS'):
+            path.append(os.environ['BESS'])
 
         # TODO(gatesn): #339 - make better use of jedi environments, they seem pretty powerful
         environment = jedi.api.environment.get_cached_default_environment()

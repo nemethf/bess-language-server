@@ -34,7 +34,12 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 
-class ACL():
+from pybess.module import Module
+from pybess.bess import BESS
+
+bess = BESS()
+
+class ACL(Module):
   """
   ACL module from NetBricks
 
@@ -89,7 +94,7 @@ class ACL():
     pass
 
 
-class ArpResponder():
+class ArpResponder(Module):
   """
   Respond to ARP requests and learns new MAC's
 
@@ -143,7 +148,7 @@ class ArpResponder():
     pass
 
 
-class BPF():
+class BPF(Module):
   """
   classifies packets with pcap-filter(7) syntax
 
@@ -192,7 +197,7 @@ class BPF():
     pass
 
 
-class Buffer():
+class Buffer(Module):
   """
   buffers packets into larger batches
 
@@ -222,7 +227,7 @@ class Buffer():
     pass
 
 
-class Bypass():
+class Bypass(Module):
   """
   bypasses packets without any processing
 
@@ -256,7 +261,7 @@ class Bypass():
     pass
 
 
-class DRR():
+class DRR(Module):
   """
   Deficit Round Robin
 
@@ -317,7 +322,7 @@ class DRR():
     pass
 
 
-class Dump():
+class Dump(Module):
   """
   Dump packet data and metadata attributes
 
@@ -359,7 +364,7 @@ class Dump():
     pass
 
 
-class EtherEncap():
+class EtherEncap(Module):
   """
   encapsulates packets with an Ethernet header
 
@@ -389,7 +394,7 @@ class EtherEncap():
     pass
 
 
-class ExactMatch():
+class ExactMatch(Module):
   """
   Multi-field classifier with an exact match table
 
@@ -509,7 +514,7 @@ class ExactMatch():
     pass
 
 
-class FlowGen():
+class FlowGen(Module):
   """
   generates packets on a flow basis
 
@@ -592,7 +597,7 @@ class FlowGen():
     pass
 
 
-class GenericDecap():
+class GenericDecap(Module):
   """
   remove specified bytes from the beginning of packets
 
@@ -620,7 +625,7 @@ class GenericDecap():
     pass
 
 
-class GenericEncap():
+class GenericEncap(Module):
   """
   encapsulates packets with constant values and metadata attributes
 
@@ -675,7 +680,7 @@ class GenericEncap():
     pass
 
 
-class HashLB():
+class HashLB(Module):
   """
   splits packets on a flow basis with L2/L3/L4 header fields
 
@@ -743,7 +748,7 @@ class HashLB():
     pass
 
 
-class IPChecksum():
+class IPChecksum(Module):
   """
   recomputes the IPv4 checksum
 
@@ -752,7 +757,7 @@ class IPChecksum():
   """
 
 
-class IPEncap():
+class IPEncap(Module):
   """
   encapsulates packets with an IPv4 header
 
@@ -782,7 +787,7 @@ class IPEncap():
     pass
 
 
-class IPLookup():
+class IPLookup(Module):
   """
   performs Longest Prefix Match on IPv4 packets
 
@@ -855,7 +860,7 @@ class IPLookup():
     pass
 
 
-class IPSwap():
+class IPSwap(Module):
   """
   swaps source/destination IP addresses and L4 ports
 
@@ -867,7 +872,7 @@ class IPSwap():
   """
 
 
-class L2Forward():
+class L2Forward(Module):
   """
   classifies packets with destination MAC address
 
@@ -978,7 +983,7 @@ class L2Forward():
     pass
 
 
-class L4Checksum():
+class L4Checksum(Module):
   """
   recomputes the TCP/Ipv4 and UDP/IPv4 checksum
 
@@ -987,7 +992,7 @@ class L4Checksum():
   """
 
 
-class MACSwap():
+class MACSwap(Module):
   """
   swaps source/destination MAC addresses
 
@@ -1018,7 +1023,7 @@ class MACSwap():
     pass
 
 
-class MPLSPop():
+class MPLSPop(Module):
   """
   Pop MPLS label
 
@@ -1045,7 +1050,7 @@ class MPLSPop():
     pass
 
 
-class Measure():
+class Measure(Module):
   """
   measures packet latency (paired with Timestamp module)
 
@@ -1119,7 +1124,7 @@ class Measure():
     pass
 
 
-class Merge():
+class Merge(Module):
   """
   All input gates go out of a single output gate
 
@@ -1147,7 +1152,7 @@ class Merge():
     pass
 
 
-class MetadataTest():
+class MetadataTest(Module):
   """
   Dynamic metadata test module
 
@@ -1167,7 +1172,7 @@ class MetadataTest():
     pass
 
 
-class NAT():
+class NAT(Module):
   """
   Dynamic Network address/port translator
 
@@ -1235,7 +1240,7 @@ class NAT():
     pass
 
 
-class NoOP():
+class NoOP(Module):
   """
   creates a task that does nothing
 
@@ -1244,7 +1249,7 @@ class NoOP():
   """
 
 
-class PortInc():
+class PortInc(Module):
   """
   receives packets from a port
 
@@ -1292,7 +1297,7 @@ class PortInc():
     pass
 
 
-class PortOut():
+class PortOut(Module):
   """
   sends pakets to a port
 
@@ -1324,7 +1329,7 @@ class PortOut():
     pass
 
 
-class Queue():
+class Queue(Module):
   """
   terminates current task and enqueue packets for new task
 
@@ -1397,7 +1402,7 @@ class Queue():
     pass
 
 
-class QueueInc():
+class QueueInc(Module):
   """
   receives packets from a port via a specific queue
 
@@ -1446,7 +1451,7 @@ class QueueInc():
     pass
 
 
-class QueueOut():
+class QueueOut(Module):
   """
   sends packets to a port via a specific queue
 
@@ -1481,7 +1486,7 @@ class QueueOut():
     pass
 
 
-class RandomSplit():
+class RandomSplit(Module):
   """
   randomly splits/drops packets
 
@@ -1537,7 +1542,7 @@ class RandomSplit():
     pass
 
 
-class RandomUpdate():
+class RandomUpdate(Module):
   """
   updates packet data with random values
 
@@ -1594,7 +1599,7 @@ class RandomUpdate():
     pass
 
 
-class Replicate():
+class Replicate(Module):
   """
   makes a copy of a packet and sends it out over n gates
 
@@ -1639,7 +1644,7 @@ class Replicate():
     pass
 
 
-class Rewrite():
+class Rewrite(Module):
   """
   replaces entire packet data
 
@@ -1713,7 +1718,7 @@ class Rewrite():
     pass
 
 
-class RoundRobin():
+class RoundRobin(Module):
   """
   splits packets evenly with round robin
 
@@ -1774,7 +1779,7 @@ class RoundRobin():
     pass
 
 
-class SetMetadata():
+class SetMetadata(Module):
   """
   Set metadata attributes to packets
 
@@ -1810,7 +1815,7 @@ class SetMetadata():
     pass
 
 
-class Sink():
+class Sink(Module):
   """
   discards all packets
 
@@ -1866,7 +1871,7 @@ class Sink():
     pass
 
 
-class Source():
+class Source(Module):
   """
   infinitely generates packets with uninitialized data
 
@@ -1947,7 +1952,7 @@ class Source():
     pass
 
 
-class Split():
+class Split(Module):
   """
   split packets depending on packet data or metadata attributes
 
@@ -1981,7 +1986,7 @@ class Split():
     pass
 
 
-class StaticNAT():
+class StaticNAT(Module):
   """
   Static network address translator
 
@@ -2057,7 +2062,7 @@ class StaticNAT():
     pass
 
 
-class Timestamp():
+class Timestamp(Module):
   """
   marks current time to packets (paired with Measure module)
 
@@ -2089,7 +2094,7 @@ class Timestamp():
     pass
 
 
-class Update():
+class Update(Module):
   """
   updates packet data with specified values
 
@@ -2141,7 +2146,7 @@ class Update():
     pass
 
 
-class UpdateTTL():
+class UpdateTTL(Module):
   """
   decreases the IP TTL field by 1
 
@@ -2153,7 +2158,7 @@ class UpdateTTL():
   """
 
 
-class UrlFilter():
+class UrlFilter(Module):
   """
   Filter HTTP connection
 
@@ -2248,7 +2253,7 @@ class UrlFilter():
     pass
 
 
-class VLANPop():
+class VLANPop(Module):
   """
   removes 802.1Q/802.11ad VLAN tag
 
@@ -2277,7 +2282,7 @@ class VLANPop():
     pass
 
 
-class VLANPush():
+class VLANPush(Module):
   """
   adds 802.1Q/802.11ad VLAN tag
 
@@ -2323,7 +2328,7 @@ class VLANPush():
     pass
 
 
-class VLANSplit():
+class VLANSplit(Module):
   """
   split packets depending on their VID
 
@@ -2349,7 +2354,7 @@ class VLANSplit():
     pass
 
 
-class VXLANDecap():
+class VXLANDecap(Module):
   """
   decapsulates the outer Ethetnet/IP/UDP/VXLAN headers
 
@@ -2375,7 +2380,7 @@ class VXLANDecap():
     pass
 
 
-class VXLANEncap():
+class VXLANEncap(Module):
   """
   encapsulates packets with UDP/VXLAN headers
 
@@ -2403,7 +2408,7 @@ class VXLANEncap():
     pass
 
 
-class WildcardMatch():
+class WildcardMatch(Module):
   """
   Multi-field classifier with a wildcard match table
 
@@ -2516,7 +2521,7 @@ class WildcardMatch():
     pass
 
 
-class WorkerSplit():
+class WorkerSplit(Module):
   """
   send packets to output gate X, the id of current worker
 
