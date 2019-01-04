@@ -23,7 +23,7 @@ with emacs/[eglot](https://github.com/joaotavora/eglot).
 Adding the following lines to your [Emacs initialization
 file](https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html)
 is enough.  However, there are further configuration ideas in
-[bess.el].
+[bess.el](bess.el).
 
 ```elisp
 (setenv "BESS" "/opt/bess")
