@@ -411,8 +411,8 @@ class ExactMatch(Module):
     $BESS/core/modules/exact_match.cc:93
 
   Example usage:
-    $BESS/bessctl/conf/samples/l2forward.bess:45
     $BESS/bessctl/conf/samples/exactmatch.bess:55
+    $BESS/bessctl/conf/samples/l2forward.bess:45
   """
 
   def __init__(self, fields=None, masks=None):
@@ -529,8 +529,8 @@ class FlowGen(Module):
     $BESS/core/modules/flowgen.cc:344
 
   Example usage:
-    $BESS/bessctl/conf/samples/url_filter.bess:40
     $BESS/bessctl/conf/samples/flowgen.bess:48
+    $BESS/bessctl/conf/samples/url_filter.bess:40
   """
 
   def __init__(self, template=None, pps=None, flow_rate=None, flow_duration=None, arrival=None, duration=None, quick_rampup=None, ip_src_range=None, ip_dst_range=None, port_src_range=None, port_dst_range=None):
@@ -1342,8 +1342,8 @@ class Queue(Module):
     $BESS/core/modules/queue.cc:88
 
   Example usage:
-    $BESS/bessctl/conf/samples/queue.bess:42
     $BESS/bessctl/conf/samples/qtest.bess:35
+    $BESS/bessctl/conf/samples/queue.bess:42
   """
 
   def __init__(self, size=None, prefetch=None, backpressure=None):
@@ -1556,9 +1556,9 @@ class RandomUpdate(Module):
     $BESS/core/modules/random_update.cc:42
 
   Example usage:
+    $BESS/bessctl/conf/samples/hash_lb.bess:55
     $BESS/bessctl/conf/samples/l2forward.bess:58
     $BESS/bessctl/conf/samples/update.bess:48
-    $BESS/bessctl/conf/samples/hash_lb.bess:55
   """
 
   def __init__(self, fields=None):
@@ -1659,23 +1659,23 @@ class Rewrite(Module):
     $BESS/core/modules/rewrite.cc:44
 
   Example usage:
-    $BESS/bessctl/conf/samples/wildcardmatch.bess:60
-    $BESS/bessctl/conf/samples/l2forward.bess:57
-    $BESS/bessctl/conf/samples/arp.bess:40
-    $BESS/bessctl/conf/samples/update_ttl.bess:39
-    $BESS/bessctl/conf/samples/update.bess:39
-    $BESS/bessctl/conf/samples/drr.bess:45
-    $BESS/bessctl/conf/samples/nat.bess:54
-    $BESS/bessctl/conf/samples/queue.bess:41
-    $BESS/bessctl/conf/samples/iplookup.bess:53
     $BESS/bessctl/conf/samples/acl.bess:51
-    $BESS/bessctl/conf/samples/vlantest.bess:40
-    $BESS/bessctl/conf/samples/tc/max_burst.bess:38
-    $BESS/bessctl/conf/samples/mpls_test.bess:26
-    $BESS/bessctl/conf/samples/hash_lb.bess:51
-    $BESS/bessctl/conf/samples/random_split.bess:41
+    $BESS/bessctl/conf/samples/arp.bess:40
+    $BESS/bessctl/conf/samples/drr.bess:45
     $BESS/bessctl/conf/samples/exactmatch.bess:59
     $BESS/bessctl/conf/samples/generic_encap.bess:44
+    $BESS/bessctl/conf/samples/hash_lb.bess:51
+    $BESS/bessctl/conf/samples/iplookup.bess:53
+    $BESS/bessctl/conf/samples/l2forward.bess:57
+    $BESS/bessctl/conf/samples/mpls_test.bess:26
+    $BESS/bessctl/conf/samples/nat.bess:54
+    $BESS/bessctl/conf/samples/queue.bess:41
+    $BESS/bessctl/conf/samples/random_split.bess:41
+    $BESS/bessctl/conf/samples/tc/max_burst.bess:38
+    $BESS/bessctl/conf/samples/update.bess:39
+    $BESS/bessctl/conf/samples/update_ttl.bess:39
+    $BESS/bessctl/conf/samples/vlantest.bess:40
+    $BESS/bessctl/conf/samples/wildcardmatch.bess:60
   """
 
   def __init__(self, templates=None):
@@ -1734,8 +1734,8 @@ class RoundRobin(Module):
   Example usage:
     $BESS/bessctl/conf/samples/igate.bess:40
     $BESS/bessctl/conf/samples/roundrobin.bess:31
-    $BESS/bessctl/conf/samples/update_ttl.bess:39
     $BESS/bessctl/conf/samples/update.bess:39
+    $BESS/bessctl/conf/samples/update_ttl.bess:39
   """
 
   def __init__(self, gates=None, mode=None):
@@ -1794,8 +1794,8 @@ class SetMetadata(Module):
     $BESS/core/modules/set_metadata.cc:180
 
   Example usage:
-    $BESS/bessctl/conf/samples/wildcardmatch.bess:60
     $BESS/bessctl/conf/samples/generic_encap.bess:43
+    $BESS/bessctl/conf/samples/wildcardmatch.bess:60
   """
 
   def __init__(self, attrs=None):
@@ -1828,34 +1828,34 @@ class Sink(Module):
     $BESS/core/module.cc:131
 
   Example usage:
-    $BESS/bessctl/conf/samples/igate.bess:31
-    $BESS/bessctl/conf/samples/url_filter.bess:47
-    $BESS/bessctl/conf/samples/wildcardmatch.bess:63
-    $BESS/bessctl/conf/samples/l2forward.bess:60
-    $BESS/bessctl/conf/samples/roundrobin.bess:32
-    $BESS/bessctl/conf/samples/arp.bess:40
-    $BESS/bessctl/conf/samples/flowgen.bess:49
-    $BESS/bessctl/conf/samples/update_ttl.bess:47
-    $BESS/bessctl/conf/samples/update.bess:44
-    $BESS/bessctl/conf/samples/drr.bess:46
-    $BESS/bessctl/conf/samples/nat.bess:54
-    $BESS/bessctl/conf/samples/queue.bess:44
-    $BESS/bessctl/conf/samples/iplookup.bess:55
-    $BESS/bessctl/conf/samples/qtest.bess:36
     $BESS/bessctl/conf/samples/acl.bess:51
-    $BESS/bessctl/conf/samples/vlantest.bess:40
+    $BESS/bessctl/conf/samples/arp.bess:40
+    $BESS/bessctl/conf/samples/drr.bess:46
+    $BESS/bessctl/conf/samples/exactmatch.bess:61
+    $BESS/bessctl/conf/samples/flowgen.bess:49
+    $BESS/bessctl/conf/samples/generic_encap.bess:49
+    $BESS/bessctl/conf/samples/hash_lb.bess:62
+    $BESS/bessctl/conf/samples/igate.bess:31
+    $BESS/bessctl/conf/samples/iplookup.bess:55
+    $BESS/bessctl/conf/samples/l2forward.bess:60
+    $BESS/bessctl/conf/samples/mpls_test.bess:26
+    $BESS/bessctl/conf/samples/multicore.bess:45
+    $BESS/bessctl/conf/samples/nat.bess:54
+    $BESS/bessctl/conf/samples/qtest.bess:36
+    $BESS/bessctl/conf/samples/queue.bess:44
+    $BESS/bessctl/conf/samples/random_split.bess:44
+    $BESS/bessctl/conf/samples/replicate.bess:32
+    $BESS/bessctl/conf/samples/roundrobin.bess:32
+    $BESS/bessctl/conf/samples/s2s.bess:34
     $BESS/bessctl/conf/samples/tc/complextree.bess:67
     $BESS/bessctl/conf/samples/tc/max_burst.bess:38
     $BESS/bessctl/conf/samples/tc/ratelimit.bess:34
-    $BESS/bessctl/conf/samples/s2s.bess:34
-    $BESS/bessctl/conf/samples/mpls_test.bess:26
-    $BESS/bessctl/conf/samples/hash_lb.bess:62
-    $BESS/bessctl/conf/samples/random_split.bess:44
+    $BESS/bessctl/conf/samples/update.bess:44
+    $BESS/bessctl/conf/samples/update_ttl.bess:47
+    $BESS/bessctl/conf/samples/url_filter.bess:47
+    $BESS/bessctl/conf/samples/vlantest.bess:40
+    $BESS/bessctl/conf/samples/wildcardmatch.bess:63
     $BESS/bessctl/conf/samples/worker_split.bess:41
-    $BESS/bessctl/conf/samples/replicate.bess:32
-    $BESS/bessctl/conf/samples/exactmatch.bess:61
-    $BESS/bessctl/conf/samples/generic_encap.bess:49
-    $BESS/bessctl/conf/samples/multicore.bess:45
   """
 
   def __init__(self):
@@ -1884,32 +1884,32 @@ class Source(Module):
     $BESS/core/modules/source.cc:40
 
   Example usage:
-    $BESS/bessctl/conf/samples/igate.bess:31
-    $BESS/bessctl/conf/samples/wildcardmatch.bess:60
-    $BESS/bessctl/conf/samples/l2forward.bess:56
-    $BESS/bessctl/conf/samples/roundrobin.bess:31
-    $BESS/bessctl/conf/samples/arp.bess:40
-    $BESS/bessctl/conf/samples/update_ttl.bess:39
-    $BESS/bessctl/conf/samples/update.bess:39
-    $BESS/bessctl/conf/samples/drr.bess:45
-    $BESS/bessctl/conf/samples/nat.bess:54
-    $BESS/bessctl/conf/samples/queue.bess:40
-    $BESS/bessctl/conf/samples/iplookup.bess:53
-    $BESS/bessctl/conf/samples/qtest.bess:33
     $BESS/bessctl/conf/samples/acl.bess:51
-    $BESS/bessctl/conf/samples/vlantest.bess:40
+    $BESS/bessctl/conf/samples/arp.bess:40
+    $BESS/bessctl/conf/samples/drr.bess:45
+    $BESS/bessctl/conf/samples/exactmatch.bess:59
+    $BESS/bessctl/conf/samples/generic_encap.bess:42
+    $BESS/bessctl/conf/samples/hash_lb.bess:50
+    $BESS/bessctl/conf/samples/igate.bess:31
+    $BESS/bessctl/conf/samples/iplookup.bess:53
+    $BESS/bessctl/conf/samples/l2forward.bess:56
+    $BESS/bessctl/conf/samples/mpls_test.bess:26
+    $BESS/bessctl/conf/samples/multicore.bess:46
+    $BESS/bessctl/conf/samples/nat.bess:54
+    $BESS/bessctl/conf/samples/qtest.bess:33
+    $BESS/bessctl/conf/samples/queue.bess:40
+    $BESS/bessctl/conf/samples/random_split.bess:40
+    $BESS/bessctl/conf/samples/replicate.bess:31
+    $BESS/bessctl/conf/samples/roundrobin.bess:31
+    $BESS/bessctl/conf/samples/s2s.bess:34
     $BESS/bessctl/conf/samples/tc/complextree.bess:67
     $BESS/bessctl/conf/samples/tc/max_burst.bess:38
     $BESS/bessctl/conf/samples/tc/ratelimit.bess:34
-    $BESS/bessctl/conf/samples/s2s.bess:34
-    $BESS/bessctl/conf/samples/mpls_test.bess:26
-    $BESS/bessctl/conf/samples/hash_lb.bess:50
-    $BESS/bessctl/conf/samples/random_split.bess:40
+    $BESS/bessctl/conf/samples/update.bess:39
+    $BESS/bessctl/conf/samples/update_ttl.bess:39
+    $BESS/bessctl/conf/samples/vlantest.bess:40
+    $BESS/bessctl/conf/samples/wildcardmatch.bess:60
     $BESS/bessctl/conf/samples/worker_split.bess:35
-    $BESS/bessctl/conf/samples/replicate.bess:31
-    $BESS/bessctl/conf/samples/exactmatch.bess:59
-    $BESS/bessctl/conf/samples/generic_encap.bess:42
-    $BESS/bessctl/conf/samples/multicore.bess:46
   """
 
   def __init__(self, pkt_size=None):
