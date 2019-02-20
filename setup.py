@@ -73,6 +73,7 @@ setup(
         ],
         'bessls': [
             'autopep8 = bessls.plugins.autopep8_format',
+            'bess = bessls.plugins.bess',
             'jedi_completion = bessls.plugins.jedi_completion',
             'jedi_definition = bessls.plugins.definition',
             'jedi_hover = bessls.plugins.hover',

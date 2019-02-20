@@ -5,11 +5,6 @@ from bessls import hookimpl, uris
 log = logging.getLogger(__name__)
 
 
-def offset(d):
-    if d.module_path.endswith('.bess'):
-        return 2
-    return 1
-
 @hookimpl
 def pyls_definitions(config, document, position):
     settings = config.plugin_settings('jedi_definition')
@@ -25,7 +20,7 @@ def pyls_definitions(config, document, position):
     return [{
         'uri': uris.uri_with(document.uri, path=d.module_path),
         'range': {
-            'start': {'line': d.line - offset(d), 'character': d.column},
-            'end': {'line': d.line - offset(d), 'character': d.column + len(d.name)}
+            'start': {'line': d.line - 1, 'character': d.column},
+            'end': {'line': d.line - 1, 'character': d.column + len(d.name)}
         }
     } for d in definitions]
