@@ -3,7 +3,7 @@ import logging
 import os
 from yapf.yapflib import file_resources
 from yapf.yapflib.yapf_api import FormatCode
-from bessls import hookimpl
+from pyls import hookimpl
 
 log = logging.getLogger(__name__)
 

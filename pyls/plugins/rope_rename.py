@@ -5,7 +5,7 @@ import os
 from rope.base import libutils
 from rope.refactor.rename import Rename
 
-from bessls import hookimpl, uris
+from pyls import hookimpl, uris
 
 log = logging.getLogger(__name__)
 

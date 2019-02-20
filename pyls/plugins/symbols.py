@@ -1,7 +1,7 @@
 # Copyright 2017 Palantir Technologies, Inc.
 import logging
-from bessls import hookimpl
-from bessls.lsp import SymbolKind
+from pyls import hookimpl
+from pyls.lsp import SymbolKind
 
 log = logging.getLogger(__name__)
 

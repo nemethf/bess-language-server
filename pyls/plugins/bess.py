@@ -5,7 +5,7 @@
 import json
 import os
 import logging
-from bessls import hookimpl, uris
+from pyls import hookimpl, uris
 
 log = logging.getLogger(__name__)
 

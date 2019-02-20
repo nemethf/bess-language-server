@@ -23,4 +23,4 @@ reports = no
 
 [TYPECHECK]
 
-generated-members = bessls_*
+generated-members = pyls_*
