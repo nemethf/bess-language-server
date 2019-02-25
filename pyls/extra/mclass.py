@@ -1339,7 +1339,7 @@ class Queue(Module):
   __Output Gates__: 1
 
   Definition:
-    $BESS/core/modules/queue.cc:88
+    $BESS/core/modules/queue.cc:89
 
   Example usage:
     $BESS/bessctl/conf/samples/qtest.bess:35
@@ -1358,7 +1358,7 @@ class Queue(Module):
     :param backpressure: When backpressure is enabled, the module will notify upstream if it is overloaded.
 
     Definition:
-      $BESS/core/modules/queue.cc:88
+      $BESS/core/modules/queue.cc:89
     """
     pass
 
@@ -1397,7 +1397,7 @@ class Queue(Module):
     size.
 
     Definition:
-      $BESS/core/modules/queue.cc:240
+      $BESS/core/modules/queue.cc:239
     """
     pass
 
