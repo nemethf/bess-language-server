@@ -9,7 +9,7 @@ from pyls import _utils, hookspecs, uris, PYLS
 log = logging.getLogger(__name__)
 
 # Sources of config, first source overrides next source
-DEFAULT_CONFIG_SOURCES = ['pycodestyle']
+DEFAULT_CONFIG_SOURCES = ['pycodestyle', 'bess']
 
 
 class Config(object):
@@ -32,6 +32,11 @@ class Config(object):
         try:
             from .pycodestyle_conf import PyCodeStyleConfig
             self._config_sources['pycodestyle'] = PyCodeStyleConfig(self._root_path)
+        except ImportError:
+            pass
+        try:
+            from .bess_conf import BessConfig
+            self._config_sources['bess'] = BessConfig(self._root_path)
         except ImportError:
             pass
 

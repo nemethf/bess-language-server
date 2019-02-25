@@ -9,31 +9,37 @@ from pyls import hookimpl, uris
 
 log = logging.getLogger(__name__)
 
+@hookimpl
+def pyls_settings():
+    # We cannot set the defaults in config.py, because that
+    # would overwrite user level configuration.  See:
+    # ../config/config.py:107
+    return {'plugins': {'bess': {}}}
+
 def fix_offset(d):
     if d['uri'].endswith('.bess'):
         d['range']['start']['line'] -= 1
         d['range']['end']['line'] -= 1
     return d
 
-def process_refs(outcome, document, ref_types):
+def process_refs(config, document, goto_kind, outcome):
     defs = []
     for l in outcome.get_result():
         defs.extend( [fix_offset(d) for d in l] )
 
-    defs = insert_bess_refs(document, defs, ref_types)
+    defs = insert_bess_refs(config, document, goto_kind, defs)
 
     outcome.force_result([defs])
 
 @hookimpl(hookwrapper=True)
 def pyls_definitions(config, document, position):
     outcome = yield
-    process_refs(outcome, document, ['cpp_definition'])
+    process_refs(config, document, 'definitions', outcome)
 
 @hookimpl(hookwrapper=True)
-def pyls_references(document, position, exclude_declaration=False):
+def pyls_references(config, document, position, exclude_declaration=False):
     outcome = yield
-    process_refs(outcome, document,
-                 ['mclass', 'cpp_definition', 'protobuf', 'examples'])
+    process_refs(config, document, 'references', outcome)
 
 db = {}
 def get_mclass_db(mpath):
@@ -43,7 +49,29 @@ def get_mclass_db(mpath):
             db = json.load(f)
     return db
 
-def insert_bess_refs(document, refs, ref_types):
+def get_ref_types(config, goto_kind):
+    settings = config.plugin_settings('bess')
+    ref_types = settings.get('definitions')
+    if not ref_types:
+        # Should keep this synchronized with
+        # ../../vscode-client/package.json
+        defaults = {
+            'definitions': [
+                "cpp_definition",
+            ],
+            'references': [
+                "cpp_definition",
+                "mclass",
+                "protobuf",
+                "examples",
+            ],
+        }
+        ref_types = defaults.get(goto_kind, [])
+    log.warn("Settings for '%s': %s", goto_kind, ref_types)
+    return ref_types
+
+def insert_bess_refs(config, document, goto_kind, refs):
+    ref_types = get_ref_types(config, goto_kind)
     extra_refs = []
     mclass_uri = uris.uri_with(document.uri,
                                path=os.path.join(document.mpath, 'mclass.py'))
