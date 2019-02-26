@@ -114,7 +114,7 @@ def insert_bess_refs(config, document, goto_kind, refs):
             ref = conv_loc(document, {'file': filename, 'line': proto_loc})
             ref_groups['protobuf'].append(ref)
 
-            for loc in cmd.get('examples'):
+            for loc in cmd.get('examples', []):
                 ref = conv_loc(document, loc)
                 ref_groups['examples'].append(ref)
 
