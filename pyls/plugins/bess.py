@@ -2,9 +2,10 @@
 
 # Bess specific funcionality
 
+import collections
 import json
-import os
 import logging
+import os
 from pyls import hookimpl, uris
 
 log = logging.getLogger(__name__)
@@ -51,7 +52,7 @@ def get_mclass_db(mpath):
 
 def get_ref_types(config, goto_kind):
     settings = config.plugin_settings('bess')
-    ref_types = settings.get('definitions')
+    ref_types = settings.get(goto_kind)
     if not ref_types:
         # Should keep this synchronized with
         # ../../vscode-client/package.json
@@ -70,19 +71,26 @@ def get_ref_types(config, goto_kind):
     log.warn("Settings for '%s': %s", goto_kind, ref_types)
     return ref_types
 
+def conv_loc(document, loc):
+    path = document.make_abs_bess_filename(loc['file'])
+    return {
+        'uri': uris.uri_with(document.uri, path=path),
+        'range': {
+            'start': {'line': loc['line'] - 1, 'character': 0},
+            'end': {'line': loc['line'] - 1, 'character': 0}
+        }
+    }
+
 def insert_bess_refs(config, document, goto_kind, refs):
-    ref_types = get_ref_types(config, goto_kind)
-    extra_refs = []
+    ref_groups = collections.defaultdict(list)
     mclass_uri = uris.uri_with(document.uri,
                                path=os.path.join(document.mpath, 'mclass.py'))
     db = get_mclass_db(document.mpath)
-    orig_refs = []
     for ref in refs:
         if not (ref['uri'] == mclass_uri):
-            orig_refs.append(ref)
+            ref_groups['project'].append(ref)
             continue
-        if 'mclass' in ref_types:
-            orig_refs.append(ref)
+        ref_groups['mclass'].append(ref)
         mline = ref['range']['start']['line']
         for mclass in db['mclass']:
             for cmd in [mclass] + mclass['cmds']:
@@ -90,24 +98,20 @@ def insert_bess_refs(config, document, goto_kind, refs):
                     break
             else:
                 continue
-            locations = []
-            if 'cpp_definition' in ref_types:
-                locations = [cmd['definition']]
-            proto_loc = db['msg'].get(cmd['arg'], {}).get('line')
-            if 'protobuf' in ref_types and proto_loc:
-                filename = 'protobuf/module_msg.proto'
-                filename = document.make_abs_bess_filename(filename)
-                locations.append({'file': filename, 'line': proto_loc})
-            if 'examples' in ref_types:
-                locations += (cmd.get('examples') or [])
-            for loc in locations:
-                path = document.make_abs_bess_filename(loc['file'])
-                extra_refs.append({
-                    'uri': uris.uri_with(document.uri, path=path),
-                    'range': {
-                        'start': {'line': loc['line'] - 1, 'character': 0},
-                        'end': {'line': loc['line'] - 1, 'character': 0}
-                        }
-                })
 
-    return orig_refs + extra_refs
+            ref = conv_loc(document, cmd['definition'])
+            ref_groups['cpp_definition'].append(ref)
+
+            proto_loc = db['msg'].get(cmd['arg'], {}).get('line')
+            filename = 'protobuf/module_msg.proto'
+            ref = conv_loc(document, {'file': filename, 'line': proto_loc})
+            ref_groups['protobuf'].append(ref)
+
+            for loc in cmd.get('examples'):
+                ref = conv_loc(document, loc)
+                ref_groups['examples'].append(ref)
+
+    refs = []
+    for ref_type in get_ref_types(config, goto_kind):
+        refs += ref_groups[ref_type]
+    return refs

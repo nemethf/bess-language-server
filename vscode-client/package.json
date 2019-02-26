@@ -32,31 +32,41 @@
                 },
                 "pyls.plugins.bess.definitions": {
                     "type": "array",
-                    "default": ["cpp_definition"],
+                    "default": [
+                        "project",
+                        "cpp_definition"
+                    ],
                     "description": "List of ref_types to show for 'Go to definition'.",
                     "items": {
                         "type": "string",
                         "enum": [
-                            "mclass",
                             "cpp_definition",
-                            "protobuf",
-                            "examples"
+                            "examples",
+                            "mclass",
+                            "project",
+                            "protobuf"
                         ]
                     },
                     "uniqueItems": true
                 },
                 "pyls.plugins.bess.references": {
                     "type": "array",
-                    "default": ["cpp_definition", "mclass",
-                                "protobuf", "examples"],
+                    "default": [
+                        "project",
+                        "cpp_definition",
+                        "mclass",
+                        "protobuf",
+                        "examples"
+                    ],
                     "description": "List of ref_types to show for 'Go to references'.",
                     "items": {
                         "type": "string",
                         "enum": [
-                            "mclass",
                             "cpp_definition",
-                            "protobuf",
-                            "examples"
+                            "examples",
+                            "mclass",
+                            "project",
+                            "protobuf"
                         ]
                     },
                     "uniqueItems": true
