@@ -218,9 +218,10 @@ class Document(object):
         return jedi.Script(**kwargs)
 
     def sys_path(self):
-        self.mpath = os.path.join(os.path.dirname(__file__), 'extra')
         # Copy our extra sys path
         path = list(self._extra_sys_path)
+
+        self.mpath = os.path.join(os.path.dirname(__file__), 'extra')
         path.append(self.mpath)
         if os.environ.get('BESS'):
             path.append(os.environ['BESS'])
@@ -230,8 +231,3 @@ class Document(object):
         path.extend(environment.get_sys_path())
 
         return path
-
-    def make_abs_bess_filename(self, filename):
-        if os.path.isabs(filename):
-            return filename
-        return os.path.join(os.environ.get('BESS'), filename)

@@ -17,6 +17,16 @@ def pyls_settings():
     # ../config/config.py:107
     return {'plugins': {'bess': {}}}
 
+@hookimpl(hookwrapper=True)
+def pyls_definitions(config, document, position):
+    outcome = yield
+    process_refs(config, document, 'definitions', outcome)
+
+@hookimpl(hookwrapper=True)
+def pyls_references(config, document, position, exclude_declaration=False):
+    outcome = yield
+    process_refs(config, document, 'references', outcome)
+
 def fix_offset(d):
     if d['uri'].endswith('.bess'):
         d['range']['start']['line'] -= 1
@@ -31,16 +41,6 @@ def process_refs(config, document, goto_kind, outcome):
     defs = insert_bess_refs(config, document, goto_kind, defs)
 
     outcome.force_result([defs])
-
-@hookimpl(hookwrapper=True)
-def pyls_definitions(config, document, position):
-    outcome = yield
-    process_refs(config, document, 'definitions', outcome)
-
-@hookimpl(hookwrapper=True)
-def pyls_references(config, document, position, exclude_declaration=False):
-    outcome = yield
-    process_refs(config, document, 'references', outcome)
 
 db = {}
 def get_mclass_db(mpath):
@@ -71,8 +71,13 @@ def get_ref_types(config, goto_kind):
     log.warn("Settings for '%s': %s", goto_kind, ref_types)
     return ref_types
 
+def make_abs_bess_filename(filename):
+    if os.path.isabs(filename):
+        return filename
+    return os.path.join(os.environ.get('BESS', ''), filename)
+
 def conv_loc(document, loc):
-    path = document.make_abs_bess_filename(loc['file'])
+    path = make_abs_bess_filename(loc['file'])
     return {
         'uri': uris.uri_with(document.uri, path=path),
         'range': {
