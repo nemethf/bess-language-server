@@ -58,9 +58,11 @@ def get_ref_types(config, goto_kind):
         # ../../vscode-client/package.json
         defaults = {
             'definitions': [
+                "project",
                 "cpp_definition",
             ],
             'references': [
+                "project",
                 "cpp_definition",
                 "mclass",
                 "protobuf",
