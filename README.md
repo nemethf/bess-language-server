@@ -34,3 +34,17 @@ is enough.  However, there are further configuration ideas in
   (add-to-list 'eglot-server-programs
                '(bess-mode . ("bessls"))))
 ```
+
+## Screenshots
+
+* Documentation help of a class
+  ![bess-obj-doc](resources/bess-obj-doc.png)
+* Documentation help for a method arugment
+  ![bess-arg-doc](resources/bess-arg-doc.png)
+* Find refreneces for a symbol.  The default order of the references is
+  "project", "cpp_definition", "mclass", "protobuf", "examples".
+  ![bess-refs](resources/bess-refs.png)
+* Completion of global variable `bess`
+  ![bess-auto-complete-bess](resources/bess-auto-complete-bess.png)
+* Completion of a module instance
+  ![bess-auto-complete-mod](resources/bess-auto-complete-mod.png)
