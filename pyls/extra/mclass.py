@@ -48,12 +48,6 @@ class ACL(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/acl.cc:42
-
-  Example usage:
-    $BESS/bessctl/conf/samples/acl.bess:49
   """
 
   def __init__(self, rules=None):
@@ -65,9 +59,6 @@ class ACL(Module):
     __Output Gates__: 1
 
     :param rules: A list of ACL rules.
-
-    Definition:
-      $BESS/core/modules/acl.cc:42
     """
     pass
 
@@ -80,17 +71,10 @@ class ACL(Module):
     __Output Gates__: 1
 
     :param rules: A list of ACL rules.
-
-    Definition:
-      $BESS/core/modules/acl.cc:55
     """
     pass
 
   def clear(self):
-    """
-    Definition:
-      $BESS/core/modules/acl.cc:60
-    """
     pass
 
 
@@ -103,12 +87,6 @@ class ArpResponder(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/module.cc:131
-
-  Example usage:
-    $BESS/bessctl/conf/samples/arp.bess:37
   """
 
   def __init__(self, ip=None, mac_addr=None):
@@ -123,9 +101,6 @@ class ArpResponder(Module):
 
     The IP
     :param mac_addr: The MAC address
-
-    Definition:
-      $BESS/core/module.cc:131
     """
     pass
 
@@ -141,9 +116,6 @@ class ArpResponder(Module):
 
     The IP
     :param mac_addr: The MAC address
-
-    Definition:
-      $BESS/core/modules/arp_responder.cc:42
     """
     pass
 
@@ -156,9 +128,6 @@ class BPF(Module):
 
   __Input Gates__: 1
   __Output Gates__: many (configurable)
-
-  Definition:
-    $BESS/core/modules/bpf.cc:57
   """
 
   def __init__(self, filters=None):
@@ -169,9 +138,6 @@ class BPF(Module):
     __Output Gates__: many (configurable)
 
     :param filters: The BPF initialized function takes a list of BPF filters.
-
-    Definition:
-      $BESS/core/modules/bpf.cc:57
     """
     pass
 
@@ -183,17 +149,10 @@ class BPF(Module):
     __Output Gates__: many (configurable)
 
     :param filters: The BPF initialized function takes a list of BPF filters.
-
-    Definition:
-      $BESS/core/modules/bpf.cc:73
     """
     pass
 
   def clear(self):
-    """
-    Definition:
-      $BESS/core/modules/bpf.cc:115
-    """
     pass
 
 
@@ -207,9 +166,6 @@ class Buffer(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/module.cc:131
   """
 
   def __init__(self):
@@ -220,9 +176,6 @@ class Buffer(Module):
 
     __Input Gates__: 1
     __Output Gates__: 1
-
-    Definition:
-      $BESS/core/module.cc:131
     """
     pass
 
@@ -237,13 +190,6 @@ class Bypass(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/bypass.cc:33
-
-  Example usage:
-    $BESS/bessctl/conf/samples/igate.bess:31
-    $BESS/bessctl/conf/samples/worker_split.bess:34
   """
 
   def __init__(self, cycles_per_batch=None, cycles_per_packet=None, cycles_per_byte=None):
@@ -254,9 +200,6 @@ class Bypass(Module):
 
     __Input Gates__: 1
     __Output Gates__: 1
-
-    Definition:
-      $BESS/core/modules/bypass.cc:33
     """
     pass
 
@@ -271,12 +214,6 @@ class DRR(Module):
 
   __Input_Gates__: 1
   __Output_Gates__:  1
-
-  Definition:
-    $BESS/core/modules/drr.cc:77
-
-  Example usage:
-    $BESS/bessctl/conf/samples/drr.bess:46
   """
 
   def __init__(self, num_flows=None, quantum=None, max_flow_queue_size=None):
@@ -291,9 +228,6 @@ class DRR(Module):
     :param num_flows: Number of flows to handle in module
     :param quantum: the number of bytes to allocate to each on every round
     :param max_flow_queue_size: the max size that any Flows queue can get
-
-    Definition:
-      $BESS/core/modules/drr.cc:77
     """
     pass
 
@@ -302,9 +236,6 @@ class DRR(Module):
     the SetQuantumSize function sets a new quantum for DRR module to operate on.
 
     :param quantum: the number of bytes to allocate to each on every round
-
-    Definition:
-      $BESS/core/modules/drr.cc:411
     """
     pass
 
@@ -315,9 +246,6 @@ class DRR(Module):
     that flow until the queue is below this size.
 
     :param max_queue_size: the max size that any Flows queue can get
-
-    Definition:
-      $BESS/core/modules/drr.cc:420
     """
     pass
 
@@ -330,9 +258,6 @@ class Dump(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/dump.cc:47
   """
 
   def __init__(self, interval=None):
@@ -343,9 +268,6 @@ class Dump(Module):
     __Output Gates__: 1
 
     :param interval: How frequently to sample and print a packet, in seconds.
-
-    Definition:
-      $BESS/core/modules/dump.cc:47
     """
     pass
 
@@ -357,9 +279,6 @@ class Dump(Module):
     __Output Gates__: 1
 
     :param interval: How frequently to sample and print a packet, in seconds.
-
-    Definition:
-      $BESS/core/modules/dump.cc:69
     """
     pass
 
@@ -374,9 +293,6 @@ class EtherEncap(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/ether_encap.cc:44
   """
 
   def __init__(self):
@@ -387,9 +303,6 @@ class EtherEncap(Module):
 
     __Input Gates__: 1
     __Output Gates__: 1
-
-    Definition:
-      $BESS/core/modules/ether_encap.cc:44
     """
     pass
 
@@ -406,13 +319,6 @@ class ExactMatch(Module):
 
   __Input Gates__: 1
   __Output Gates__: many (configurable)
-
-  Definition:
-    $BESS/core/modules/exact_match.cc:93
-
-  Example usage:
-    $BESS/bessctl/conf/samples/exactmatch.bess:55
-    $BESS/bessctl/conf/samples/l2forward.bess:45
   """
 
   def __init__(self, fields=None, masks=None):
@@ -428,24 +334,13 @@ class ExactMatch(Module):
 
     :param fields: A list of ExactMatch Fields
     :param masks: mask(i) corresponds to the mask for field(i)
-
-    Definition:
-      $BESS/core/modules/exact_match.cc:93
     """
     pass
 
   def get_initial_arg(self):
-    """
-    Definition:
-      $BESS/core/modules/exact_match.cc:122
-    """
     pass
 
   def get_runtime_config(self):
-    """
-    Definition:
-      $BESS/core/modules/exact_match.cc:150
-    """
     pass
 
   def set_runtime_config(self, default_gate=None, rules=None):
@@ -457,9 +352,6 @@ class ExactMatch(Module):
     :return: ExactMatchConfig represents the current runtime configuration
     of an ExactMatch module, as returned by get_runtime_config and
     set by set_runtime_config.
-
-    Definition:
-      $BESS/core/modules/exact_match.cc:211
     """
     pass
 
@@ -475,9 +367,6 @@ class ExactMatch(Module):
 
     :param gate: The gate to forward out packets that mach this rule.
     :param fields: The exact match values to check for
-
-    Definition:
-      $BESS/core/modules/exact_match.cc:274
     """
     pass
 
@@ -487,17 +376,10 @@ class ExactMatch(Module):
     Example use: `delete(fields=[aton('12.3.4.5'), aton('5.4.3.2')])`
 
     :param fields: The field values for the rule to be deleted.
-
-    Definition:
-      $BESS/core/modules/exact_match.cc:284
     """
     pass
 
   def clear(self):
-    """
-    Definition:
-      $BESS/core/modules/exact_match.cc:302
-    """
     pass
 
   def set_default_gate(self, gate=None):
@@ -507,9 +389,6 @@ class ExactMatch(Module):
     Example use in bessctl: `setDefaultGate(gate=2)`
 
     :param gate: The gate number to send the default traffic out.
-
-    Definition:
-      $BESS/core/modules/exact_match.cc:308
     """
     pass
 
@@ -524,13 +403,6 @@ class FlowGen(Module):
 
   __Input Gates__: 0
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/flowgen.cc:344
-
-  Example usage:
-    $BESS/bessctl/conf/samples/flowgen.bess:48
-    $BESS/bessctl/conf/samples/url_filter.bess:40
   """
 
   def __init__(self, template=None, pps=None, flow_rate=None, flow_duration=None, arrival=None, duration=None, quick_rampup=None, ip_src_range=None, ip_dst_range=None, port_src_range=None, port_dst_range=None):
@@ -553,9 +425,6 @@ class FlowGen(Module):
     :param ip_dst_range: When generating new flows, FlowGen modifies the template packet by changing the IP dst, incrementing it by at most ip_dst_range.
     :param port_src_range: When generating new flows, FlowGen modifies the template packet by changing the TCP port, incrementing it by at most port_src_range.
     :param port_dst_range: When generating new flows, FlowGen modifies the template packet by changing the TCP dst port, incrementing it by at most port_dst_range.
-
-    Definition:
-      $BESS/core/modules/flowgen.cc:344
     """
     pass
 
@@ -579,9 +448,6 @@ class FlowGen(Module):
     :param ip_dst_range: When generating new flows, FlowGen modifies the template packet by changing the IP dst, incrementing it by at most ip_dst_range.
     :param port_src_range: When generating new flows, FlowGen modifies the template packet by changing the TCP port, incrementing it by at most port_src_range.
     :param port_dst_range: When generating new flows, FlowGen modifies the template packet by changing the TCP dst port, incrementing it by at most port_dst_range.
-
-    Definition:
-      $BESS/core/modules/flowgen.cc:318
     """
     pass
 
@@ -590,9 +456,6 @@ class FlowGen(Module):
     The FlowGen module has a command `set_burst(...)` that allows you to specify
     the maximum number of packets to be stored in a single PacketBatch released
     by the module.
-
-    Definition:
-      $BESS/core/modules/flowgen.cc:331
     """
     pass
 
@@ -605,9 +468,6 @@ class GenericDecap(Module):
 
   __Input Gates__: 1
   __Ouptut Gates__: 1
-
-  Definition:
-    $BESS/core/modules/generic_decap.cc:33
   """
 
   def __init__(self, bytes=None):
@@ -618,9 +478,6 @@ class GenericDecap(Module):
     __Ouptut Gates__: 1
 
     :param bytes: The number of bytes to strip off.
-
-    Definition:
-      $BESS/core/modules/generic_decap.cc:33
     """
     pass
 
@@ -646,12 +503,6 @@ class GenericEncap(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/generic_encap.cc:104
-
-  Example usage:
-    $BESS/bessctl/conf/samples/generic_encap.bess:45
   """
 
   def __init__(self, fields=None):
@@ -673,9 +524,6 @@ class GenericEncap(Module):
 
     __Input Gates__: 1
     __Output Gates__: 1
-
-    Definition:
-      $BESS/core/modules/generic_encap.cc:104
     """
     pass
 
@@ -690,12 +538,6 @@ class HashLB(Module):
 
   __Input Gates__: 1
   __Output Gates__: many (configurable)
-
-  Definition:
-    $BESS/core/modules/hash_lb.cc:118
-
-  Example usage:
-    $BESS/bessctl/conf/samples/hash_lb.bess:56
   """
 
   def __init__(self, gates=None, mode=None, fields=None):
@@ -710,9 +552,6 @@ class HashLB(Module):
     :param gates: A list of gate numbers over which to partition packets
     :param mode: The mode (`'l2'`, `'l3'`, or `'l4'`) for the hash function.
     :param fields: A list of fields that define a custom tuple.
-
-    Definition:
-      $BESS/core/modules/hash_lb.cc:118
     """
     pass
 
@@ -728,9 +567,6 @@ class HashLB(Module):
 
     :param mode: What fields to hash over, `'l2'`, `'l3'`, and `'l4'` are only valid values.
     :param fields: A list of fields that define a custom tuple.
-
-    Definition:
-      $BESS/core/modules/hash_lb.cc:74
     """
     pass
 
@@ -741,9 +577,6 @@ class HashLB(Module):
     Example use in bessctl: `lb.setGates(gates=[0,1,2,3])`
 
     :param gates: A list of gate numbers to load balance traffic over
-
-    Definition:
-      $BESS/core/modules/hash_lb.cc:101
     """
     pass
 
@@ -751,9 +584,6 @@ class HashLB(Module):
 class IPChecksum(Module):
   """
   recomputes the IPv4 checksum
-
-  Definition:
-    $BESS/core/module.cc:131
   """
 
 
@@ -767,9 +597,6 @@ class IPEncap(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/ip_encap.cc:50
   """
 
   def __init__(self):
@@ -780,9 +607,6 @@ class IPEncap(Module):
 
     __Input Gates__: 1
     __Output Gates__: 1
-
-    Definition:
-      $BESS/core/modules/ip_encap.cc:50
     """
     pass
 
@@ -797,12 +621,6 @@ class IPLookup(Module):
 
   __Input Gates__: 1
   __Output Gates__: many (configurable, depending on rule values)
-
-  Definition:
-    $BESS/core/modules/ip_lookup.cc:56
-
-  Example usage:
-    $BESS/bessctl/conf/samples/iplookup.bess:53
   """
 
   def __init__(self, max_rules=None, max_tbl8s=None):
@@ -816,9 +634,6 @@ class IPLookup(Module):
 
     :param max_rules: Maximum number of rules (default: 1024)
     :param max_tbl8s: Maximum number of IP prefixes with smaller than /24 (default: 128)
-
-    Definition:
-      $BESS/core/modules/ip_lookup.cc:56
     """
     pass
 
@@ -832,9 +647,6 @@ class IPLookup(Module):
     :param prefix: The CIDR IP part of the prefix to match
     :param prefix_len: The prefix length
     :param gate: The number of the gate to forward matching traffic on.
-
-    Definition:
-      $BESS/core/modules/ip_lookup.cc:187
     """
     pass
 
@@ -846,29 +658,16 @@ class IPLookup(Module):
 
     :param prefix: The CIDR IP part of the prefix to match
     :param prefix_len: The prefix length
-
-    Definition:
-      $BESS/core/modules/ip_lookup.cc:214
     """
     pass
 
   def clear(self):
-    """
-    Definition:
-      $BESS/core/modules/ip_lookup.cc:235
-    """
     pass
 
 
 class IPSwap(Module):
   """
   swaps source/destination IP addresses and L4 ports
-
-  Definition:
-    $BESS/core/module.cc:131
-
-  Example usage:
-    $BESS/bessctl/conf/samples/nat.bess:54
   """
 
 
@@ -883,12 +682,6 @@ class L2Forward(Module):
 
   __Input Gates__: 1
   __Ouput Gates__: many (configurable, depending on rules)
-
-  Definition:
-    $BESS/core/modules/l2_forward.cc:557
-
-  Example usage:
-    $BESS/bessctl/conf/samples/l2forward.bess:49
   """
 
   def __init__(self, size=None, bucket=None):
@@ -903,9 +696,6 @@ class L2Forward(Module):
 
     :param size: Configures the forwarding hash table -- total number of hash table entries.
     :param bucket: Configures the forwarding hash table -- total number of slots per hash value.
-
-    Definition:
-      $BESS/core/modules/l2_forward.cc:557
     """
     pass
 
@@ -916,9 +706,6 @@ class L2Forward(Module):
     MAC address and which gate the L2Forward module should direct it out of.
 
     :param entries: A list of L2Forward entries.
-
-    Definition:
-      $BESS/core/modules/l2_forward.cc:609
     """
     pass
 
@@ -928,9 +715,6 @@ class L2Forward(Module):
     from the MAC forwarding table.
 
     :param addrs: The address to remove from the forwarding table
-
-    Definition:
-      $BESS/core/modules/l2_forward.cc:641
     """
     pass
 
@@ -941,9 +725,6 @@ class L2Forward(Module):
     to direct unmatched traffic to.
 
     :param gate: The default gate to forward traffic which matches no entry to.
-
-    Definition:
-      $BESS/core/modules/l2_forward.cc:670
     """
     pass
 
@@ -956,9 +737,6 @@ class L2Forward(Module):
 
     :return: This message type provides the reponse to the L2Forward function `lookup(..)`.
     It returns the gate that a requested MAC address is currently assigned to.
-
-    Definition:
-      $BESS/core/modules/l2_forward.cc:676
     """
     pass
 
@@ -976,9 +754,6 @@ class L2Forward(Module):
     :param base: The base MAC address
     :param count: How many addresses beyond base to populate into the routing table
     :param gate_count: How many gates to create in the L2Forward module.
-
-    Definition:
-      $BESS/core/modules/l2_forward.cc:708
     """
     pass
 
@@ -986,9 +761,6 @@ class L2Forward(Module):
 class L4Checksum(Module):
   """
   recomputes the TCP/Ipv4 and UDP/IPv4 checksum
-
-  Definition:
-    $BESS/core/module.cc:131
   """
 
 
@@ -1001,12 +773,6 @@ class MACSwap(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/module.cc:131
-
-  Example usage:
-    $BESS/bessctl/conf/samples/nat.bess:54
   """
 
   def __init__(self):
@@ -1016,9 +782,6 @@ class MACSwap(Module):
 
     __Input Gates__: 1
     __Output Gates__: 1
-
-    Definition:
-      $BESS/core/module.cc:131
     """
     pass
 
@@ -1026,12 +789,6 @@ class MACSwap(Module):
 class MPLSPop(Module):
   """
   Pop MPLS label
-
-  Definition:
-    $BESS/core/module.cc:131
-
-  Example usage:
-    $BESS/bessctl/conf/samples/mpls_test.bess:23
   """
 
   def set(self, remove_eth_header=None, next_eth_type=None):
@@ -1043,9 +800,6 @@ class MPLSPop(Module):
 
     :param remove_eth_header: Remove ETH header with the pop
     :param next_eth_type: The next ETH type to set
-
-    Definition:
-      $BESS/core/modules/mpls_pop.cc:85
     """
     pass
 
@@ -1062,9 +816,6 @@ class Measure(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/measure.cc:63
   """
 
   def __init__(self, offset=None, jitter_sample_prob=None, latency_ns_max=None, latency_ns_resolution=None):
@@ -1084,9 +835,6 @@ class Measure(Module):
     :param jitter_sample_prob: How often the module should sample packets for inter-packet arrival measurements (to measure jitter).
     :param latency_ns_max: maximum latency expected, in ns (default 0.1 s)
     :param latency_ns_resolution: resolution, in ns (default 100)
-
-    Definition:
-      $BESS/core/modules/measure.cc:63
     """
     pass
 
@@ -1110,17 +858,10 @@ class Measure(Module):
     anything from 100-199 counts as "100", and so on.  The average
     is of samples using this graininess, but (being a result of division)
     may not be a multiple of the resolution.
-
-    Definition:
-      $BESS/core/modules/measure.cc:189
     """
     pass
 
   def clear(self):
-    """
-    Definition:
-      $BESS/core/modules/measure.cc:161
-    """
     pass
 
 
@@ -1133,9 +874,6 @@ class Merge(Module):
 
   __Input Gates__: many (configurable)
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/module.cc:131
   """
 
   def __init__(self):
@@ -1145,9 +883,6 @@ class Merge(Module):
 
     __Input Gates__: many (configurable)
     __Output Gates__: 1
-
-    Definition:
-      $BESS/core/module.cc:131
     """
     pass
 
@@ -1157,17 +892,11 @@ class MetadataTest(Module):
   Dynamic metadata test module
 
   The MetadataTest module is used for internal testing purposes.
-
-  Definition:
-    $BESS/core/modules/mttest.cc:68
   """
 
   def __init__(self, read=None, write=None, update=None):
     """
     The MetadataTest module is used for internal testing purposes.
-
-    Definition:
-      $BESS/core/modules/mttest.cc:68
     """
     pass
 
@@ -1188,12 +917,6 @@ class NAT(Module):
 
   __Input Gates__: 2 (0 for internal->external, and 1 for external->internal direction)
   __Output Gates__: 2 (same as the input gate)
-
-  Definition:
-    $BESS/core/modules/nat.cc:65
-
-  Example usage:
-    $BESS/bessctl/conf/samples/nat.bess:53
   """
 
   def __init__(self, ext_addrs=None):
@@ -1212,40 +935,22 @@ class NAT(Module):
     __Output Gates__: 2 (same as the input gate)
 
     :param ext_addrs: list of external IP addresses
-
-    Definition:
-      $BESS/core/modules/nat.cc:65
     """
     pass
 
   def get_initial_arg(self):
-    """
-    Definition:
-      $BESS/core/modules/nat.cc:115
-    """
     pass
 
   def get_runtime_config(self):
-    """
-    Definition:
-      $BESS/core/modules/nat.cc:130
-    """
     pass
 
   def set_runtime_config(self):
-    """
-    Definition:
-      $BESS/core/modules/nat.cc:134
-    """
     pass
 
 
 class NoOP(Module):
   """
   creates a task that does nothing
-
-  Definition:
-    $BESS/core/modules/noop.cc:33
   """
 
 
@@ -1260,9 +965,6 @@ class PortInc(Module):
 
   __Input Gates__: 0
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/port_inc.cc:39
   """
 
   def __init__(self, port=None, prefetch=None):
@@ -1277,9 +979,6 @@ class PortInc(Module):
 
     :param port: The portname to connect to.
     :param prefetch: Whether or not to prefetch packets from the port.
-
-    Definition:
-      $BESS/core/modules/port_inc.cc:39
     """
     pass
 
@@ -1290,9 +989,6 @@ class PortInc(Module):
     the module.
 
     :param burst: The maximum "burst" of packets (ie, the maximum batch size)
-
-    Definition:
-      $BESS/core/modules/port_inc.cc:155
     """
     pass
 
@@ -1307,9 +1003,6 @@ class PortOut(Module):
 
   __Input Gates__: 1
   __Output Gates__: 0
-
-  Definition:
-    $BESS/core/modules/port_out.cc:34
   """
 
   def __init__(self, port=None):
@@ -1322,9 +1015,6 @@ class PortOut(Module):
     __Output Gates__: 0
 
     :param port: The portname to connect to.
-
-    Definition:
-      $BESS/core/modules/port_out.cc:34
     """
     pass
 
@@ -1337,13 +1027,6 @@ class Queue(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/queue.cc:89
-
-  Example usage:
-    $BESS/bessctl/conf/samples/qtest.bess:35
-    $BESS/bessctl/conf/samples/queue.bess:42
   """
 
   def __init__(self, size=None, prefetch=None, backpressure=None):
@@ -1356,9 +1039,6 @@ class Queue(Module):
     :param size: The maximum number of packets to store in the queue.
     :param prefetch: When prefetch is enabled, the module will perform CPU prefetch on the first 64B of each packet onto CPU L1 cache. Default value is false.
     :param backpressure: When backpressure is enabled, the module will notify upstream if it is overloaded.
-
-    Definition:
-      $BESS/core/modules/queue.cc:89
     """
     pass
 
@@ -1369,9 +1049,6 @@ class Queue(Module):
     by the module.
 
     :param burst: The maximum "burst" of packets (ie, the maximum batch size)
-
-    Definition:
-      $BESS/core/modules/queue.cc:204
     """
     pass
 
@@ -1381,9 +1058,6 @@ class Queue(Module):
     size of the queue in total number of packets.
 
     :param size: The maximum number of packets to store in the queue.
-
-    Definition:
-      $BESS/core/modules/queue.cc:216
     """
     pass
 
@@ -1395,9 +1069,6 @@ class Queue(Module):
     :return: Modules that are queues or contain queues may contain functions
     `get_status()` that take no parameters and returns the queue occupancy and
     size.
-
-    Definition:
-      $BESS/core/modules/queue.cc:239
     """
     pass
 
@@ -1413,9 +1084,6 @@ class QueueInc(Module):
 
   __Input Gates__: 0
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/queue_inc.cc:40
   """
 
   def __init__(self, port=None, qid=None, prefetch=None):
@@ -1431,9 +1099,6 @@ class QueueInc(Module):
     :param port: The portname to connect to (read from).
     :param qid: The queue on that port to read from. qid starts from 0.
     :param prefetch: When prefetch is enabled, the module will perform CPU prefetch on the first 64B of each packet onto CPU L1 cache. Default value is false.
-
-    Definition:
-      $BESS/core/modules/queue_inc.cc:40
     """
     pass
 
@@ -1444,9 +1109,6 @@ class QueueInc(Module):
     by the module.
 
     :param burst: The maximum "burst" of packets (ie, the maximum batch size)
-
-    Definition:
-      $BESS/core/modules/queue_inc.cc:136
     """
     pass
 
@@ -1462,9 +1124,6 @@ class QueueOut(Module):
 
   __Input Gates__: 1
   __Output Gates__: 0
-
-  Definition:
-    $BESS/core/modules/queue_out.cc:36
   """
 
   def __init__(self, port=None, qid=None):
@@ -1479,9 +1138,6 @@ class QueueOut(Module):
 
     :param port: The portname to connect to.
     :param qid: The queue on that port to write out to.
-
-    Definition:
-      $BESS/core/modules/queue_out.cc:36
     """
     pass
 
@@ -1494,12 +1150,6 @@ class RandomSplit(Module):
 
   __InputGates__: 1
   __Output Gates__: many (configurable)
-
-  Definition:
-    $BESS/core/modules/random_split.cc:46
-
-  Example usage:
-    $BESS/bessctl/conf/samples/random_split.bess:42
   """
 
   def __init__(self, drop_rate=None, gates=None):
@@ -1511,9 +1161,6 @@ class RandomSplit(Module):
 
     :param drop_rate: Probability of dropping packet.
     :param gates: A list of gate numbers to split the traffic.
-
-    Definition:
-      $BESS/core/modules/random_split.cc:46
     """
     pass
 
@@ -1523,9 +1170,6 @@ class RandomSplit(Module):
     the probability of dropping packets
 
     :param drop_rate: Probability of dropping packet.
-
-    Definition:
-      $BESS/core/modules/random_split.cc:72
     """
     pass
 
@@ -1535,9 +1179,6 @@ class RandomSplit(Module):
     the total number of output gates in the module.
 
     :param gates: A list of gate numbers to split the traffic.
-
-    Definition:
-      $BESS/core/modules/random_split.cc:83
     """
     pass
 
@@ -1551,14 +1192,6 @@ class RandomUpdate(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/random_update.cc:42
-
-  Example usage:
-    $BESS/bessctl/conf/samples/hash_lb.bess:55
-    $BESS/bessctl/conf/samples/l2forward.bess:58
-    $BESS/bessctl/conf/samples/update.bess:48
   """
 
   def __init__(self, fields=None):
@@ -1570,9 +1203,6 @@ class RandomUpdate(Module):
     __Output Gates__: 1
 
     :param fields: A list of Random Update Fields.
-
-    Definition:
-      $BESS/core/modules/random_update.cc:42
     """
     pass
 
@@ -1585,17 +1215,10 @@ class RandomUpdate(Module):
     __Output Gates__: 1
 
     :param fields: A list of Random Update Fields.
-
-    Definition:
-      $BESS/core/modules/random_update.cc:46
     """
     pass
 
   def clear(self):
-    """
-    Definition:
-      $BESS/core/modules/random_update.cc:111
-    """
     pass
 
 
@@ -1608,12 +1231,6 @@ class Replicate(Module):
 
   __Input Gates__: 1
   __Output Gates__: many (configurable)
-
-  Definition:
-    $BESS/core/modules/replicate.cc:37
-
-  Example usage:
-    $BESS/bessctl/conf/samples/replicate.bess:31
   """
 
   def __init__(self, gates=None):
@@ -1625,9 +1242,6 @@ class Replicate(Module):
     __Output Gates__: many (configurable)
 
     :param gates: A list of gate numbers to send packet copies to.
-
-    Definition:
-      $BESS/core/modules/replicate.cc:37
     """
     pass
 
@@ -1637,9 +1251,6 @@ class Replicate(Module):
     the total number of output gates in the module.
 
     :param gates: A list of gate numbers to replicate the traffic over.
-
-    Definition:
-      $BESS/core/modules/replicate.cc:54
     """
     pass
 
@@ -1654,28 +1265,6 @@ class Rewrite(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/rewrite.cc:44
-
-  Example usage:
-    $BESS/bessctl/conf/samples/acl.bess:51
-    $BESS/bessctl/conf/samples/arp.bess:40
-    $BESS/bessctl/conf/samples/drr.bess:45
-    $BESS/bessctl/conf/samples/exactmatch.bess:59
-    $BESS/bessctl/conf/samples/generic_encap.bess:44
-    $BESS/bessctl/conf/samples/hash_lb.bess:51
-    $BESS/bessctl/conf/samples/iplookup.bess:53
-    $BESS/bessctl/conf/samples/l2forward.bess:57
-    $BESS/bessctl/conf/samples/mpls_test.bess:26
-    $BESS/bessctl/conf/samples/nat.bess:54
-    $BESS/bessctl/conf/samples/queue.bess:41
-    $BESS/bessctl/conf/samples/random_split.bess:41
-    $BESS/bessctl/conf/samples/tc/max_burst.bess:38
-    $BESS/bessctl/conf/samples/update.bess:39
-    $BESS/bessctl/conf/samples/update_ttl.bess:39
-    $BESS/bessctl/conf/samples/vlantest.bess:40
-    $BESS/bessctl/conf/samples/wildcardmatch.bess:60
   """
 
   def __init__(self, templates=None):
@@ -1688,9 +1277,6 @@ class Rewrite(Module):
     __Output Gates__: 1
 
     :param templates: A list of bytestrings representing packet templates.
-
-    Definition:
-      $BESS/core/modules/rewrite.cc:44
     """
     pass
 
@@ -1704,17 +1290,10 @@ class Rewrite(Module):
     __Output Gates__: 1
 
     :param templates: A list of bytestrings representing packet templates.
-
-    Definition:
-      $BESS/core/modules/rewrite.cc:48
     """
     pass
 
   def clear(self):
-    """
-    Definition:
-      $BESS/core/modules/rewrite.cc:84
-    """
     pass
 
 
@@ -1727,15 +1306,6 @@ class RoundRobin(Module):
 
   __Input Gates__: 1
   __Output Gates__: many (configurable)
-
-  Definition:
-    $BESS/core/modules/round_robin.cc:40
-
-  Example usage:
-    $BESS/bessctl/conf/samples/igate.bess:40
-    $BESS/bessctl/conf/samples/roundrobin.bess:31
-    $BESS/bessctl/conf/samples/update.bess:39
-    $BESS/bessctl/conf/samples/update_ttl.bess:39
   """
 
   def __init__(self, gates=None, mode=None):
@@ -1748,9 +1318,6 @@ class RoundRobin(Module):
 
     :param gates: A list of gate numbers to split packets across.
     :param mode: Whether to split across gate with every `'packet'` or every `'batch'`.
-
-    Definition:
-      $BESS/core/modules/round_robin.cc:40
     """
     pass
 
@@ -1760,9 +1327,6 @@ class RoundRobin(Module):
     to balance traffic across gates per-packet or per-batch.
 
     :param mode: whether to perform `'packet'` or `'batch'` round robin partitioning.
-
-    Definition:
-      $BESS/core/modules/round_robin.cc:71
     """
     pass
 
@@ -1772,9 +1336,6 @@ class RoundRobin(Module):
     the total number of output gates in the module.
 
     :param gates: A list of gate numbers to round-robin the traffic over.
-
-    Definition:
-      $BESS/core/modules/round_robin.cc:84
     """
     pass
 
@@ -1789,13 +1350,6 @@ class SetMetadata(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/set_metadata.cc:180
-
-  Example usage:
-    $BESS/bessctl/conf/samples/generic_encap.bess:43
-    $BESS/bessctl/conf/samples/wildcardmatch.bess:60
   """
 
   def __init__(self, attrs=None):
@@ -1808,9 +1362,6 @@ class SetMetadata(Module):
     __Output Gates__: 1
 
     :param attrs: A list of attributes to attach to the packet.
-
-    Definition:
-      $BESS/core/modules/set_metadata.cc:180
     """
     pass
 
@@ -1823,39 +1374,6 @@ class Sink(Module):
 
   __Input Gates__: 1
   __Output Gates__: 0
-
-  Definition:
-    $BESS/core/module.cc:131
-
-  Example usage:
-    $BESS/bessctl/conf/samples/acl.bess:51
-    $BESS/bessctl/conf/samples/arp.bess:40
-    $BESS/bessctl/conf/samples/drr.bess:46
-    $BESS/bessctl/conf/samples/exactmatch.bess:61
-    $BESS/bessctl/conf/samples/flowgen.bess:49
-    $BESS/bessctl/conf/samples/generic_encap.bess:49
-    $BESS/bessctl/conf/samples/hash_lb.bess:62
-    $BESS/bessctl/conf/samples/igate.bess:31
-    $BESS/bessctl/conf/samples/iplookup.bess:55
-    $BESS/bessctl/conf/samples/l2forward.bess:60
-    $BESS/bessctl/conf/samples/mpls_test.bess:26
-    $BESS/bessctl/conf/samples/multicore.bess:45
-    $BESS/bessctl/conf/samples/nat.bess:54
-    $BESS/bessctl/conf/samples/qtest.bess:36
-    $BESS/bessctl/conf/samples/queue.bess:44
-    $BESS/bessctl/conf/samples/random_split.bess:44
-    $BESS/bessctl/conf/samples/replicate.bess:32
-    $BESS/bessctl/conf/samples/roundrobin.bess:32
-    $BESS/bessctl/conf/samples/s2s.bess:34
-    $BESS/bessctl/conf/samples/tc/complextree.bess:67
-    $BESS/bessctl/conf/samples/tc/max_burst.bess:38
-    $BESS/bessctl/conf/samples/tc/ratelimit.bess:34
-    $BESS/bessctl/conf/samples/update.bess:44
-    $BESS/bessctl/conf/samples/update_ttl.bess:47
-    $BESS/bessctl/conf/samples/url_filter.bess:47
-    $BESS/bessctl/conf/samples/vlantest.bess:40
-    $BESS/bessctl/conf/samples/wildcardmatch.bess:63
-    $BESS/bessctl/conf/samples/worker_split.bess:41
   """
 
   def __init__(self):
@@ -1864,9 +1382,6 @@ class Sink(Module):
 
     __Input Gates__: 1
     __Output Gates__: 0
-
-    Definition:
-      $BESS/core/module.cc:131
     """
     pass
 
@@ -1879,37 +1394,6 @@ class Source(Module):
 
   __Input Gates__: 0
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/source.cc:40
-
-  Example usage:
-    $BESS/bessctl/conf/samples/acl.bess:51
-    $BESS/bessctl/conf/samples/arp.bess:40
-    $BESS/bessctl/conf/samples/drr.bess:45
-    $BESS/bessctl/conf/samples/exactmatch.bess:59
-    $BESS/bessctl/conf/samples/generic_encap.bess:42
-    $BESS/bessctl/conf/samples/hash_lb.bess:50
-    $BESS/bessctl/conf/samples/igate.bess:31
-    $BESS/bessctl/conf/samples/iplookup.bess:53
-    $BESS/bessctl/conf/samples/l2forward.bess:56
-    $BESS/bessctl/conf/samples/mpls_test.bess:26
-    $BESS/bessctl/conf/samples/multicore.bess:46
-    $BESS/bessctl/conf/samples/nat.bess:54
-    $BESS/bessctl/conf/samples/qtest.bess:33
-    $BESS/bessctl/conf/samples/queue.bess:40
-    $BESS/bessctl/conf/samples/random_split.bess:40
-    $BESS/bessctl/conf/samples/replicate.bess:31
-    $BESS/bessctl/conf/samples/roundrobin.bess:31
-    $BESS/bessctl/conf/samples/s2s.bess:34
-    $BESS/bessctl/conf/samples/tc/complextree.bess:67
-    $BESS/bessctl/conf/samples/tc/max_burst.bess:38
-    $BESS/bessctl/conf/samples/tc/ratelimit.bess:34
-    $BESS/bessctl/conf/samples/update.bess:39
-    $BESS/bessctl/conf/samples/update_ttl.bess:39
-    $BESS/bessctl/conf/samples/vlantest.bess:40
-    $BESS/bessctl/conf/samples/wildcardmatch.bess:60
-    $BESS/bessctl/conf/samples/worker_split.bess:35
   """
 
   def __init__(self, pkt_size=None):
@@ -1920,9 +1404,6 @@ class Source(Module):
     __Output Gates__: 1
 
     :param pkt_size: The size (in bytes) of packet data to produce.
-
-    Definition:
-      $BESS/core/modules/source.cc:40
     """
     pass
 
@@ -1932,9 +1413,6 @@ class Source(Module):
     of packets to be produced by the Source module.
 
     :param pkt_size: The size (in bytes) of the packets for Source to create.
-
-    Definition:
-      $BESS/core/modules/source.cc:74
     """
     pass
 
@@ -1945,9 +1423,6 @@ class Source(Module):
     from the module.
 
     :param burst: The maximum number of packets to release in a packetbatch from the module.
-
-    Definition:
-      $BESS/core/modules/source.cc:63
     """
     pass
 
@@ -1962,9 +1437,6 @@ class Split(Module):
 
   __Input Gates__: 1
   __Output Gates__: many (up to 2^(size * 8))
-
-  Definition:
-    $BESS/core/modules/split.cc:36
   """
 
   def __init__(self, size=None, attribute=None, offset=None):
@@ -1979,9 +1451,6 @@ class Split(Module):
     :param size: The size of the value to read in bytes
     :param attribute: The name of the metadata field to read.
     :param offset: The offset (in bytes) of the data field to read.
-
-    Definition:
-      $BESS/core/modules/split.cc:36
     """
     pass
 
@@ -2007,12 +1476,6 @@ class StaticNAT(Module):
 
   __Input Gates__: 2 (0 for internal->external, and 1 for external->internal direction)
   __Output Gates__: 2 (same as the input gate)
-
-  Definition:
-    $BESS/core/modules/static_nat.cc:46
-
-  Example usage:
-    $BESS/bessctl/conf/samples/nat.bess:57
   """
 
   def __init__(self, pairs=None):
@@ -2034,31 +1497,16 @@ class StaticNAT(Module):
 
     __Input Gates__: 2 (0 for internal->external, and 1 for external->internal direction)
     __Output Gates__: 2 (same as the input gate)
-
-    Definition:
-      $BESS/core/modules/static_nat.cc:46
     """
     pass
 
   def get_initial_arg(self):
-    """
-    Definition:
-      $BESS/core/modules/static_nat.cc:92
-    """
     pass
 
   def get_runtime_config(self):
-    """
-    Definition:
-      $BESS/core/modules/static_nat.cc:111
-    """
     pass
 
   def set_runtime_config(self):
-    """
-    Definition:
-      $BESS/core/modules/static_nat.cc:115
-    """
     pass
 
 
@@ -2073,9 +1521,6 @@ class Timestamp(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/timestamp.cc:64
   """
 
   def __init__(self, offset=None):
@@ -2087,9 +1532,6 @@ class Timestamp(Module):
 
     __Input Gates__: 1
     __Output Gates__: 1
-
-    Definition:
-      $BESS/core/modules/timestamp.cc:64
     """
     pass
 
@@ -2102,12 +1544,6 @@ class Update(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/update.cc:42
-
-  Example usage:
-    $BESS/bessctl/conf/samples/update.bess:43
   """
 
   def __init__(self, fields=None):
@@ -2118,9 +1554,6 @@ class Update(Module):
     __Output Gates__: 1
 
     :param fields: A list of Update Fields.
-
-    Definition:
-      $BESS/core/modules/update.cc:42
     """
     pass
 
@@ -2132,29 +1565,16 @@ class Update(Module):
     __Output Gates__: 1
 
     :param fields: A list of Update Fields.
-
-    Definition:
-      $BESS/core/modules/update.cc:68
     """
     pass
 
   def clear(self):
-    """
-    Definition:
-      $BESS/core/modules/update.cc:106
-    """
     pass
 
 
 class UpdateTTL(Module):
   """
   decreases the IP TTL field by 1
-
-  Definition:
-    $BESS/core/module.cc:131
-
-  Example usage:
-    $BESS/bessctl/conf/samples/update_ttl.bess:46
   """
 
 
@@ -2170,12 +1590,6 @@ class UrlFilter(Module):
 
   Note that the add() command takes this same argument, and the
   clear() command takes an empty argument.
-
-  Definition:
-    $BESS/core/modules/url_filter.cc:176
-
-  Example usage:
-    $BESS/bessctl/conf/samples/url_filter.bess:44
   """
 
   def __init__(self, blacklist=None):
@@ -2190,24 +1604,13 @@ class UrlFilter(Module):
     clear() command takes an empty argument.
 
     :param blacklist: A list of Urls to block.
-
-    Definition:
-      $BESS/core/modules/url_filter.cc:176
     """
     pass
 
   def get_initial_arg(self):
-    """
-    Definition:
-      $BESS/core/modules/url_filter.cc:195
-    """
     pass
 
   def get_runtime_config(self):
-    """
-    Definition:
-      $BESS/core/modules/url_filter.cc:203
-    """
     pass
 
   def set_runtime_config(self, blacklist=None):
@@ -2221,9 +1624,6 @@ class UrlFilter(Module):
     blacklist.  This means that getting the Arg gets an *empty*
     list: we assume anyone using get_initial_arg is also using
     get_runtime_config.
-
-    Definition:
-      $BESS/core/modules/url_filter.cc:228
     """
     pass
 
@@ -2239,17 +1639,10 @@ class UrlFilter(Module):
     clear() command takes an empty argument.
 
     :param blacklist: A list of Urls to block.
-
-    Definition:
-      $BESS/core/modules/url_filter.cc:183
     """
     pass
 
   def clear(self):
-    """
-    Definition:
-      $BESS/core/modules/url_filter.cc:188
-    """
     pass
 
 
@@ -2261,12 +1654,6 @@ class VLANPop(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/module.cc:131
-
-  Example usage:
-    $BESS/bessctl/conf/samples/vlantest.bess:40
   """
 
   def __init__(self):
@@ -2275,9 +1662,6 @@ class VLANPop(Module):
 
     __Input Gates__: 1
     __Output Gates__: 1
-
-    Definition:
-      $BESS/core/module.cc:131
     """
     pass
 
@@ -2290,13 +1674,6 @@ class VLANPush(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/vlan_push.cc:48
-
-  Example usage:
-    $BESS/bessctl/conf/samples/queue.bess:43
-    $BESS/bessctl/conf/samples/vlantest.bess:40
   """
 
   def __init__(self, tci=None):
@@ -2307,9 +1684,6 @@ class VLANPush(Module):
     __Output Gates__: 1
 
     :param tci: The TCI value to insert in the VLAN tag.
-
-    Definition:
-      $BESS/core/modules/vlan_push.cc:48
     """
     pass
 
@@ -2321,9 +1695,6 @@ class VLANPush(Module):
     __Output Gates__: 1
 
     :param tci: The TCI value to insert in the VLAN tag.
-
-    Definition:
-      $BESS/core/modules/vlan_push.cc:52
     """
     pass
 
@@ -2336,9 +1707,6 @@ class VLANSplit(Module):
 
   __Input Gates__: 1
   __Output Gates__: many
-
-  Definition:
-    $BESS/core/module.cc:131
   """
 
   def __init__(self):
@@ -2347,9 +1715,6 @@ class VLANSplit(Module):
 
     __Input Gates__: 1
     __Output Gates__: many
-
-    Definition:
-      $BESS/core/module.cc:131
     """
     pass
 
@@ -2362,9 +1727,6 @@ class VXLANDecap(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/vxlan_decap.cc:48
   """
 
   def __init__(self):
@@ -2373,9 +1735,6 @@ class VXLANDecap(Module):
 
     __Input Gates__: 1
     __Output Gates__: 1
-
-    Definition:
-      $BESS/core/modules/vxlan_decap.cc:48
     """
     pass
 
@@ -2388,9 +1747,6 @@ class VXLANEncap(Module):
 
   __Input Gates__: 1
   __Output Gates__: 1
-
-  Definition:
-    $BESS/core/modules/vxlan_encap.cc:56
   """
 
   def __init__(self, dstport=None):
@@ -2401,9 +1757,6 @@ class VXLANEncap(Module):
     __Output Gates__: 1
 
     :param dstport: The destination UDP port
-
-    Definition:
-      $BESS/core/modules/vxlan_encap.cc:56
     """
     pass
 
@@ -2420,12 +1773,6 @@ class WildcardMatch(Module):
 
   __Input Gates__: 1
   __Output Gates__: many (configurable)
-
-  Definition:
-    $BESS/core/modules/wildcard_match.cc:111
-
-  Example usage:
-    $BESS/bessctl/conf/samples/wildcardmatch.bess:55
   """
 
   def __init__(self, fields=None):
@@ -2440,24 +1787,13 @@ class WildcardMatch(Module):
     __Output Gates__: many (configurable)
 
     :param fields: A list of WildcardMatch fields.
-
-    Definition:
-      $BESS/core/modules/wildcard_match.cc:111
     """
     pass
 
   def get_initial_arg(self):
-    """
-    Definition:
-      $BESS/core/modules/wildcard_match.cc:391
-    """
     pass
 
   def get_runtime_config(self):
-    """
-    Definition:
-      $BESS/core/modules/wildcard_match.cc:407
-    """
     pass
 
   def set_runtime_config(self, default_gate=None, rules=None):
@@ -2469,9 +1805,6 @@ class WildcardMatch(Module):
     :return: WildcardMatchConfig represents the current runtime configuration
     of a WildcardMatch module, as returned by get_runtime_config and
     set by set_runtime_config.
-
-    Definition:
-      $BESS/core/modules/wildcard_match.cc:471
     """
     pass
 
@@ -2485,9 +1818,6 @@ class WildcardMatch(Module):
     :param priority: If a packet matches multiple rules, the rule with higher priority will be applied. If priorities are equal behavior is undefined.
     :param values: The values to check for in each field.
     :param masks: The bitmask for each field -- set `0x0` to ignore the field altogether.
-
-    Definition:
-      $BESS/core/modules/wildcard_match.cc:318
     """
     pass
 
@@ -2497,26 +1827,16 @@ class WildcardMatch(Module):
 
     :param values: The values being checked for in the rule
     :param masks: The bitmask from the rule.
-
-    Definition:
-      $BESS/core/modules/wildcard_match.cc:357
     """
     pass
 
   def clear(self):
-    """
-    Definition:
-      $BESS/core/modules/wildcard_match.cc:384
-    """
     pass
 
   def set_default_gate(self, gate=None):
     """
     For traffic which does not match any rule in the WildcardMatch module,
     the `set_default_gate(...)` function specifies which gate to send this extra traffic to.
-
-    Definition:
-      $BESS/core/modules/wildcard_match.cc:462
     """
     pass
 
@@ -2538,12 +1858,6 @@ class WorkerSplit(Module):
 
   __Input Gates__: 1
   __Output Gates__: many
-
-  Definition:
-    $BESS/core/modules/worker_split.cc:37
-
-  Example usage:
-    $BESS/bessctl/conf/samples/worker_split.bess:40
   """
 
   def __init__(self, worker_gates=None):
@@ -2563,9 +1877,6 @@ class WorkerSplit(Module):
     __Output Gates__: many
 
     :param worker_gates: ogate -> worker mask
-
-    Definition:
-      $BESS/core/modules/worker_split.cc:37
     """
     pass
 
@@ -2586,9 +1897,6 @@ class WorkerSplit(Module):
     __Output Gates__: many
 
     :param worker_gates: ogate -> worker mask
-
-    Definition:
-      $BESS/core/modules/worker_split.cc:41
     """
     pass
 
