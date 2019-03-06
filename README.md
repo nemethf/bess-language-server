@@ -20,7 +20,58 @@ bessls should work with any text editor supporting the [language
 server protocol](https://langserver.org/), however I only tested it
 with emacs/[eglot](https://github.com/joaotavora/eglot).
 
-Adding the following lines to your [Emacs initialization
+## Features
+
+* Documentation help of a bess module
+
+  ![bess-obj-doc](resources/bess-obj-doc.png)
+
+* Documentation help for a method arugment
+
+  ![bess-arg-doc](resources/bess-arg-doc.png)
+
+* Jump to definition / refereces.  In case of multiple references, the
+  default order of the references is "project", "cpp_definition",
+  "mclass", "protobuf", "examples".
+
+  ![bess-refs](resources/bess-refs.png)
+
+* Completion of the global variable `bess`
+
+  ![bess-auto-complete-bess](resources/bess-auto-complete-bess.png)
+
+* Completion of a module instance
+
+  ![bess-auto-complete-mod](resources/bess-auto-complete-mod.png)
+
+## Installation
+
+Install with `python setup.py install`.
+The [original README](README.orig.rst#installation) has more details.
+
+## Configuration of bessls
+
+bessls adds additional configuration variables to the [original
+ones](README.orig.rst#configuration).  `bess.definitions` and
+`bess.refereneces` defines a lists of reference types.  The server
+searches for definitions/references considering the lists in order.
+The possible reference types are `project`, `cpp_definition`,
+`mclass`, `protobuf`, and `examples`.
+
+The bess-specific configuration variables can be append to an existing
+setup.cfg, tox.ini, or pycodestyle.cfg file; or it can be placed in a
+separate .bessls file.  With the following example, bessls searches
+the current project (workspace) and then the module_msg.proto file for
+references.
+
+```
+[bess]
+references = project, protobuf
+```
+
+## Configuration of Emacs/eglot
+
+Adding the following lines to the [Emacs initialization
 file](https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html)
 is enough.  However, there are further configuration ideas in
 [bess.el](bess.el).
@@ -34,17 +85,3 @@ is enough.  However, there are further configuration ideas in
   (add-to-list 'eglot-server-programs
                '(bess-mode . ("bessls"))))
 ```
-
-## Screenshots
-
-* Documentation help of a class
-  ![bess-obj-doc](resources/bess-obj-doc.png)
-* Documentation help for a method arugment
-  ![bess-arg-doc](resources/bess-arg-doc.png)
-* Find refreneces for a symbol.  The default order of the references is
-  "project", "cpp_definition", "mclass", "protobuf", "examples".
-  ![bess-refs](resources/bess-refs.png)
-* Completion of global variable `bess`
-  ![bess-auto-complete-bess](resources/bess-auto-complete-bess.png)
-* Completion of a module instance
-  ![bess-auto-complete-mod](resources/bess-auto-complete-mod.png)
