@@ -53,7 +53,7 @@ The [original README](README.orig.rst#installation) has more details.
 
 bessls adds additional configuration variables to the [original
 ones](README.orig.rst#configuration).  `bess.definitions` and
-`bess.refereneces` defines a lists of reference types.  The server
+`bess.refereneces` define lists of reference types.  The server
 searches for definitions/references considering the lists in order.
 The possible reference types are `project`, `cpp_definition`,
 `mclass`, `protobuf`, and `examples`.
