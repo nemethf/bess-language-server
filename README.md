@@ -10,11 +10,12 @@ The [Bess](https://github.com/NetSys/bess) scripting/configuration
 language is basically python with some syntactic sugar and global
 variables.  bessls relies on
 [bess-gen-doc](https://github.com/nemethf/bess-gen-doc) for the global
-variables (see [mclass.py](bessls/extra/mclass.py)).  It uses very
-simple heuristics to understand the syntactic sugar.
+variables (see [mclass.py](pyls/extra/mclass.py) and
+[db.json](pyls/extra/db.json)).  It uses very simple heuristics to
+understand the syntactic sugar.
 
-The BESS environment variable should be set to path of the bess source
-code.
+The BESS environment variable should be set to the path of the bess
+source code.
 
 bessls should work with any text editor supporting the [language
 server protocol](https://langserver.org/), however I only tested it
