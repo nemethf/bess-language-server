@@ -27,8 +27,13 @@ def pyls_references(config, document, position, exclude_declaration=False):
     outcome = yield
     process_refs(config, document, 'references', outcome)
 
-def fix_offset(d):
-    if d['uri'].endswith('.bess'):
+@hookimpl(hookwrapper=True)
+def pyls_document_highlight(config, document, position):
+    outcome = yield
+    process_refs(config, document, 'highlight', outcome)
+
+def fix_offset(d, document=None):
+    if d.get('uri', document.uri).endswith('.bess'):
         d['range']['start']['line'] -= 1
         d['range']['end']['line'] -= 1
     return d
@@ -36,9 +41,10 @@ def fix_offset(d):
 def process_refs(config, document, goto_kind, outcome):
     defs = []
     for l in outcome.get_result():
-        defs.extend( [fix_offset(d) for d in l] )
+        defs.extend( [fix_offset(d, document) for d in l] )
 
-    defs = insert_bess_refs(config, document, goto_kind, defs)
+    if goto_kind != 'highlight':
+        defs = insert_bess_refs(config, document, goto_kind, defs)
 
     outcome.force_result([defs])
 
