@@ -14,9 +14,6 @@ variables (see [mclass.py](pyls/extra/mclass.py) and
 [db.json](pyls/extra/db.json)).  It uses very simple heuristics to
 understand the syntactic sugar.
 
-The BESS environment variable should be set to the path of the bess
-source code.
-
 bessls should work with any text editor supporting the [language
 server protocol](https://langserver.org/), however I only tested it
 with emacs/[eglot](https://github.com/joaotavora/eglot).
@@ -52,22 +49,28 @@ The [original README](README.orig.rst#installation) has more details.
 
 ## Configuration of bessls
 
-bessls adds additional configuration variables to the [original
-ones](README.orig.rst#configuration).  `bess.definitions` and
-`bess.refereneces` define lists of reference types.  The server
-searches for definitions/references considering the lists in order.
-The possible reference types are `project`, `cpp_definition`,
-`mclass`, `protobuf`, and `examples`.
+bessls adds three additional configuration variables to the [original
+ones](README.orig.rst#configuration).
+
+`bess.source_directory` sets the location of bess itself.  If this
+varialbe is not set, bessls uses the BESS environment variable.
+
+`bess.definitions` and `bess.refereneces` define lists of reference
+types.  The server searches for definitions/references considering the
+lists in order.  The possible reference types are `project`,
+`cpp_definition`, `mclass`, `protobuf`, and `examples`.
 
 The bess-specific configuration variables can be append to an existing
 setup.cfg, tox.ini, or pycodestyle.cfg file; or it can be placed in a
 separate .bessls file.  With the following example, bessls searches
 the current project (workspace) and then the module_msg.proto file for
-references.
+references.  If bessls found references in the proto file it returns
+the file as /opt/bess/protobuf/module_msg.proto.
 
 ```
 [bess]
 references = project, protobuf
+source_directory = /opt/bess
 ```
 
 ## Configuration of Emacs/eglot

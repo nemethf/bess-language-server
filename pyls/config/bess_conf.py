@@ -9,7 +9,7 @@ USER_CONFIGS = [pycodestyle.USER_CONFIG] if pycodestyle.USER_CONFIG else []
 PROJECT_CONFIGS = ['pycodestyle.cfg', 'setup.cfg', 'tox.ini', '.bessls']
 
 OPTIONS = [
-    ('max-line-length', 'plugins.pycodestyle.maxLineLength', int),
+    ('source_directory', 'plugins.bess.source_directory', str),
     ('definitions', 'plugins.bess.definitions', list),
     ('references', 'plugins.bess.references', list),
 ]

@@ -71,6 +71,11 @@
                     },
                     "uniqueItems": true
                 },
+                "pyls.plugins.bess.source_directory" : {
+                    "type": "string",
+                    "default": "",
+                    "description": "Path of the bess source directory.  If empty, bessls checks the BESS environment variable."
+                },
                 "pyls.plugins.jedi_completion.enabled": {
                     "type": "boolean",
                     "default": true,

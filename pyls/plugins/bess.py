@@ -10,12 +10,33 @@ from pyls import hookimpl, uris
 
 log = logging.getLogger(__name__)
 
+# Monkey patch :(
+# But this way it's easier to sync with upstream, and
+# config variable `bess.source_directory` can be used.
+from ..workspace import Workspace
+old_source_roots = Workspace.source_roots
+def new_source_roots(self, document_path):
+    path = [get_mpath()]
+
+    log.debug('bess new_source_roots %s', self.bess_dir)
+    if self.bess_dir:
+        path.append(self.bess_dir)
+
+    path.extend(old_source_roots(self, document_path))
+    return path
+Workspace.source_roots = new_source_roots
+
 @hookimpl
 def pyls_settings():
     # We cannot set the defaults in config.py, because that
     # would overwrite user level configuration.  See:
     # ../config/config.py:107
     return {'plugins': {'bess': {}}}
+
+@hookimpl
+def pyls_initialize(config, workspace):
+    workspace.bess_dir = get_spath(config)
+    log.debug('pyls_initialize bess_dir: %s', workspace.bess_dir)
 
 @hookimpl(hookwrapper=True)
 def pyls_definitions(config, document, position):
@@ -40,7 +61,13 @@ def fix_offset(d, document=None):
 
 def process_refs(config, document, goto_kind, outcome):
     defs = []
-    for l in outcome.get_result():
+    try:
+        result = outcome.get_result()
+    except Exception as e:
+        log.warn("No results: %s, %s", e, outcome.excinfo)
+        return
+
+    for l in result:
         defs.extend( [fix_offset(d, document) for d in l] )
 
     if goto_kind != 'highlight':
@@ -48,11 +75,27 @@ def process_refs(config, document, goto_kind, outcome):
 
     outcome.force_result([defs])
 
+def get_spath(config, filename=None):
+    settings = config.plugin_settings('bess')
+    bess_dir = os.environ.get('BESS', '')
+    bess_dir = settings.get('source_directory', bess_dir)
+    bess_dir = os.path.abspath(bess_dir)
+    if filename:
+        return os.path.join(bess_dir, filename)
+    return bess_dir
+
+def get_mpath(filename=None):
+    p = os.path
+    path = p.realpath(p.join(p.dirname(__file__), '..', 'extra'))
+    if filename:
+        return p.join(path, filename)
+    return path
+
 db = {}
-def get_mclass_db(mpath):
+def get_mclass_db():
     global db
     if not db:
-        with open(os.path.join(mpath, 'db.json')) as f:
+        with open(get_mpath('db.json')) as f:
             db = json.load(f)
     return db
 
@@ -79,13 +122,13 @@ def get_ref_types(config, goto_kind):
     log.warn("Settings for '%s': %s", goto_kind, ref_types)
     return ref_types
 
-def make_abs_bess_filename(filename):
+def make_abs_bess_filename(config, filename):
     if os.path.isabs(filename):
         return filename
-    return os.path.join(os.environ.get('BESS', ''), filename)
+    return get_spath(config, filename)
 
-def conv_loc(document, loc):
-    path = make_abs_bess_filename(loc['file'])
+def conv_loc(config, document, loc):
+    path = make_abs_bess_filename(config, loc['file'])
     return {
         'uri': uris.uri_with(document.uri, path=path),
         'range': {
@@ -97,8 +140,8 @@ def conv_loc(document, loc):
 def insert_bess_refs(config, document, goto_kind, refs):
     ref_groups = collections.defaultdict(list)
     mclass_uri = uris.uri_with(document.uri,
-                               path=os.path.join(document.mpath, 'mclass.py'))
-    db = get_mclass_db(document.mpath)
+                               path=get_mpath('mclass.py'))
+    db = get_mclass_db()
     for ref in refs:
         if not (ref['uri'] == mclass_uri):
             ref_groups['project'].append(ref)
@@ -112,16 +155,17 @@ def insert_bess_refs(config, document, goto_kind, refs):
             else:
                 continue
 
-            ref = conv_loc(document, cmd['definition'])
+            ref = conv_loc(config, document, cmd['definition'])
             ref_groups['cpp_definition'].append(ref)
 
-            proto_loc = db['msg'].get(cmd['arg'], {}).get('line')
-            filename = 'protobuf/module_msg.proto'
-            ref = conv_loc(document, {'file': filename, 'line': proto_loc})
+            loc = {'file': 'protobuf/module_msg.proto',
+                   'line': db['msg'].get(cmd['arg'], {}).get('line')}
+            ref = conv_loc(config, document, loc)
+
             ref_groups['protobuf'].append(ref)
 
             for loc in cmd.get('examples', []):
-                ref = conv_loc(document, loc)
+                ref = conv_loc(config, document, loc)
                 ref_groups['examples'].append(ref)
 
     refs = []
