@@ -1,4 +1,6 @@
 # Copyright 2017 Palantir Technologies, Inc.
+import os
+
 import pycodestyle
 import pycodestyle_conf
 from pyls._utils import find_parents
@@ -18,7 +20,8 @@ OPTIONS = [
 class BessConfig(pycodestyle_conf.PyCodeStyleConfig):
 
     def user_config(self):
-        config = self.read_config_from_files(USER_CONFIGS)
+        user_configs = USER_CONFIGS + [os.path.join(self.xdg_home, 'bessls')]
+        config = self.read_config_from_files(user_configs)
         return self.parse_config(config, CONFIG_KEY, OPTIONS)
 
     def project_config(self, document_path):

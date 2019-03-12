@@ -61,9 +61,12 @@ lists in order.  The possible reference types are `project`,
 `cpp_definition`, `mclass`, `protobuf`, and `examples`.
 
 The bess-specific configuration variables can be append to an existing
-setup.cfg, tox.ini, or pycodestyle.cfg file; or it can be placed in a
-separate .bessls file.  With the following example, bessls searches
-the current project (workspace) and then the module_msg.proto file for
+setup.cfg, tox.ini, or pycodestyle.cfg file. Alternatively, it can be
+placed in a separate .bessls file at the root of the project, or in a
+user-level configuration file named bessls in
+[XDG_CONFIG_HOME](https://specifications.freedesktop.org/basedir-spec/basedir-spec-0.8.html),
+(usually ~/.config).  With the following example, bessls searches the
+current project (workspace) and then the module_msg.proto file for
 references.  If bessls found references in the proto file it returns
 the file as /opt/bess/protobuf/module_msg.proto.
 
