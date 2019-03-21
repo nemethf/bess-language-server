@@ -7,6 +7,9 @@ import json
 import logging
 import os
 from pyls import hookimpl, uris
+from pyls.config import config as pyls_config
+
+from .bess_conf import BessConfig
 
 log = logging.getLogger(__name__)
 
@@ -27,7 +30,14 @@ def new_source_roots(self, document_path):
 Workspace.source_roots = new_source_roots
 
 @hookimpl
-def pyls_settings():
+def pyls_settings(config):
+    default = pyls_config.DEFAULT_CONFIG_SOURCES
+    sources = config._settings.get('configurationSources', default)
+    sources.append('bess')
+    config._settings['configurationSources'] = sources
+
+    config._config_sources['bess'] = BessConfig(config._root_path)
+
     # We cannot set the defaults in config.py, because that
     # would overwrite user level configuration.  See:
     # ../config/config.py:107
