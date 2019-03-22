@@ -203,17 +203,13 @@ class Document(object):
         )
 
     def jedi_script(self, position=None):
-        self.msource = "from mclass import *\n" + self.source
-        self.msource = self.msource.replace('->', '; ')
-        self.msource = self.msource.replace('::', '= ')
-        self.msource = re.sub(r'\$\w(\w*)!', "'\\1'+", self.msource)
         kwargs = {
-            'source': self.msource,
+            'source': self.source,
             'path': self.path,
             'sys_path': self.sys_path()
         }
         if position:
-            kwargs['line'] = position['line'] + 2
+            kwargs['line'] = position['line'] + 1
             kwargs['column'] = _utils.clip_column(position['character'], self.lines, position['line'])
         return jedi.Script(**kwargs)
 

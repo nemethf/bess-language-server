@@ -6,6 +6,7 @@ import collections
 import json
 import logging
 import os
+import re
 from pyls import hookimpl, uris
 from pyls.config import config as pyls_config
 
@@ -16,7 +17,7 @@ log = logging.getLogger(__name__)
 # Monkey patch :(
 # But this way it's easier to sync with upstream, and
 # config variable `bess.source_directory` can be used.
-from ..workspace import Workspace
+from pyls.workspace import Workspace
 old_source_roots = Workspace.source_roots
 def new_source_roots(self, document_path):
     path = [get_mpath()]
@@ -28,6 +29,35 @@ def new_source_roots(self, document_path):
     path.extend(old_source_roots(self, document_path))
     return path
 Workspace.source_roots = new_source_roots
+
+from pyls.workspace import Document
+old_source = Document.source
+@property
+def new_source(self):
+    src = old_source.fget(self)
+    if self.filename.endswith('.bess'):
+        if getattr(self, 'prepend_import_to_source', False):
+            src = "from mclass import *\n" + src
+        src = src.replace('->', '; ')
+        src = src.replace('::', '= ')
+        src = re.sub(r'\$\w(\w*)!', "'\\1'+", src)
+    return src
+Document.source = new_source
+
+old_jedi_script = Document.jedi_script
+def new_jedi_script(self, position=None):
+    try:
+        if self.filename.endswith('.bess'):
+            self.prepend_import_to_source = True
+            if position:
+                new_position = position.copy()
+                new_position['line'] += 1
+        return old_jedi_script(self, new_position)
+    finally:
+        self.prepend_import_to_source = False
+Document.jedi_script = new_jedi_script
+
+###########################################################################
 
 @hookimpl
 def pyls_settings(config):
