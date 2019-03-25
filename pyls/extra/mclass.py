@@ -153,6 +153,10 @@ class BPF(Module):
     pass
 
   def clear(self):
+    """
+    The BPF module has a command `clear()` that takes no parameters.
+    This command removes all filters from the module.
+    """
     pass
 
 
@@ -380,6 +384,10 @@ class ExactMatch(Module):
     pass
 
   def clear(self):
+    """
+    The ExactMatch module has a command `clear()` which takes no parameters.
+    This command removes all rules from the ExactMatch module.
+    """
     pass
 
   def set_default_gate(self, gate=None):
@@ -662,6 +670,11 @@ class IPLookup(Module):
     pass
 
   def clear(self):
+    """
+    The IPLookup module has a command `clear()` which takes no parameters.
+    This function removes all rules in the IPLookup table.
+    Example use in bessctl: `myiplookuptable.clear()`
+    """
     pass
 
 
@@ -789,7 +802,24 @@ class MACSwap(Module):
 class MPLSPop(Module):
   """
   Pop MPLS label
+
+  The MPLS pop module removes MPLS labels
+
+  __Input Gates__: 1
+  __Output Gates__: 2
   """
+
+  def __init__(self, remove_eth_header=None, next_eth_type=None):
+    """
+    The MPLS pop module removes MPLS labels
+
+    __Input Gates__: 1
+    __Output Gates__: 2
+
+    :param remove_eth_header: Remove ETH header with the pop
+    :param next_eth_type: The next ETH type to set
+    """
+    pass
 
   def set(self, remove_eth_header=None, next_eth_type=None):
     """
@@ -951,7 +981,15 @@ class NAT(Module):
 class NoOP(Module):
   """
   creates a task that does nothing
+
+  This module is used for testing purposes.
   """
+
+  def __init__(self):
+    """
+    This module is used for testing purposes.
+    """
+    pass
 
 
 class PortInc(Module):
@@ -1219,6 +1257,10 @@ class RandomUpdate(Module):
     pass
 
   def clear(self):
+    """
+    The function `clear()` for RandomUpdate takes no parameters and clears all
+    state in the module.
+    """
     pass
 
 
@@ -1294,6 +1336,10 @@ class Rewrite(Module):
     pass
 
   def clear(self):
+    """
+    The function `clear()` for Rewrite takes no parameters and clears all state
+    in the module.
+    """
     pass
 
 
@@ -1569,6 +1615,10 @@ class Update(Module):
     pass
 
   def clear(self):
+    """
+    The function `clear()` for Update takes no parameters and clears all state in
+    the module.
+    """
     pass
 
 
@@ -1831,6 +1881,10 @@ class WildcardMatch(Module):
     pass
 
   def clear(self):
+    """
+    The function `clear()` for WildcardMatch takes no parameters, it clears
+    all state in the WildcardMatch module (is equivalent to calling delete for all rules)
+    """
     pass
 
   def set_default_gate(self, gate=None):
