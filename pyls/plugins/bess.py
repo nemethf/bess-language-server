@@ -3,6 +3,8 @@
 # Bess specific funcionality
 
 import collections
+import functools
+import gzip
 import json
 import logging
 import os
@@ -115,8 +117,9 @@ def process_refs(config, document, goto_kind, outcome):
 
     outcome.force_result([defs])
 
-def get_spath(config, filename=None):
-    settings = config.plugin_settings('bess')
+def get_spath(config, document=None, filename=None):
+    document_path = document and document.path
+    settings = config.plugin_settings('bess', document_path=document_path)
     bess_dir = os.environ.get('BESS', '')
     bess_dir = settings.get('source_directory', bess_dir)
     bess_dir = os.path.abspath(bess_dir)
@@ -135,12 +138,16 @@ db = {}
 def get_mclass_db():
     global db
     if not db:
-        with open(get_mpath('db.json')) as f:
+        with gzip.open(get_mpath('mclass.min.json.gz')) as f:
             db = json.load(f)
+        msg_full = {m['fullName']: m for m in db['msg']}
+        msg_short = {m['name']: m for m in db['msg']}
+        db['msg'] = msg_short
+        db['msg_full'] = msg_full
     return db
 
-def get_ref_types(config, goto_kind):
-    settings = config.plugin_settings('bess')
+def get_ref_types(config, document, goto_kind):
+    settings = config.plugin_settings('bess', document_path=document.path)
     ref_types = settings.get(goto_kind)
     if not ref_types:
         # Should keep this synchronized with
@@ -162,13 +169,21 @@ def get_ref_types(config, goto_kind):
     log.warn("Settings for '%s': %s", goto_kind, ref_types)
     return ref_types
 
-def make_abs_bess_filename(config, filename):
+def make_abs_bess_filename(config, document, filename):
+    if type(filename) == int:
+        db = get_mclass_db()
+        if filename == 0:
+            filename = get_mpath(db['files'][str(filename)])
+        else:
+            filename = db['files'][str(filename)]
     if os.path.isabs(filename):
         return filename
-    return get_spath(config, filename)
+    return get_spath(config, document, filename)
 
 def conv_loc(config, document, loc):
-    path = make_abs_bess_filename(config, loc['file'])
+    if not loc:
+        return
+    path = make_abs_bess_filename(config, document, loc['file'])
     return {
         'uri': uris.uri_with(document.uri, path=path),
         'range': {
@@ -198,17 +213,20 @@ def insert_bess_refs(config, document, goto_kind, refs):
             ref = conv_loc(config, document, cmd['definition'])
             ref_groups['cpp_definition'].append(ref)
 
-            loc = {'file': 'protobuf/module_msg.proto',
-                   'line': db['msg'].get(cmd['arg'], {}).get('line')}
+            loc = db['msg'].get(cmd['arg'], {})
             ref = conv_loc(config, document, loc)
-
             ref_groups['protobuf'].append(ref)
+
+            loc = db['msg_full'].get(cmd.get('return'))
+            ref = conv_loc(config, document, loc)
+            if ref and ref not in ref_groups['protobuf']:
+                ref_groups['protobuf'].append(ref)
 
             for loc in cmd.get('examples', []):
                 ref = conv_loc(config, document, loc)
                 ref_groups['examples'].append(ref)
 
     refs = []
-    for ref_type in get_ref_types(config, goto_kind):
+    for ref_type in get_ref_types(config, document, goto_kind):
         refs += ref_groups[ref_type]
     return refs
